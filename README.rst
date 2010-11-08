@@ -1,0 +1,4 @@
+Dependances:
+	Django;
+	South
+
