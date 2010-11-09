@@ -2,10 +2,7 @@
 # -*- coding: utf-8 -*-
 # maintainer: alou
 
-from django.shortcuts import (render_to_response,
-                              HttpResponseRedirect, redirect)
-
-from secu.models import Person
+from django.shortcuts import render_to_response
 
 
 def home(request):
