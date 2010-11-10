@@ -26,7 +26,7 @@ class Person(models.Model):
                             unique=True)
 
     def __unicode__(self):
-        return _(u"%(first_name)s (last_name)") % \
+        return _(u"%(first_name)s %(last_name)s") % \
                                         {'last_name': self.last_name,
                                          'first_name': self.first_name}
 
@@ -54,6 +54,7 @@ class Level(models.Model):
                                           for the alert level"))
     code = models.CharField(max_length=10,
                             verbose_name=_(u"Code"),
+                            blank=True,
                             help_text=_(u"code of level"))
 
     def __unicode__(self):
@@ -63,9 +64,12 @@ class Level(models.Model):
 class AlertState(models.Model):
     """ Alert for an area """
     area = models.ForeignKey(Area,
-                                verbose_name=_(u"Area"))
-    level = models.ForeignKey(Level, verbose_name=_(u'Level'))
+                             verbose_name=_(u"Area"),
+                             help_text=_(u"chosen area"))
+    level = models.ForeignKey(Level,
+                              verbose_name=_(u'Level'),
+                              help_text=_("chosen level"))
 
     def __unicode__(self):
         return _(u"%(level)s for %(area)s") % {'level': self.level,
-                                           'area': self.region}
+                                           'area': self.area}

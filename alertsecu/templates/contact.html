@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<body>
+<div id="wrapper">
+    <div id="header">
+        <div id="logo">
+            <h1><a href="#">Systeme de communication de securite avec vos ressortissants </a></h1>
+
+        </div>
+        <div id="menu">
+            <ul>
+                <li ><a href="{% url home %}">Demonstration</a></li>
+                <li ><a href="{% url how_it_works %}" title="">Comment ca marche?</a></li>
+                <li ><a href="{% url specifications %}" title="">J'ai besoin des specifications!</a></li>
+                <li class="first current_page_item"><a href="{% url contact %}" title="">Contactez nous</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- end #header -->
+    <div id="page">
+        <div id="page-bgtop">
+            <div id="page-bgbtm">
+                <div id="content">
+                    <div class="post">
+                        <h2 class="title"><a href="#">Nos contacts</a></h2>
+                    </div>
+                    <div class="post">
+
+                        <div class="entry">
+                            <p><img src="images/img09.jpg" width="538" height="200" alt="" /></p>
+                            <p>Texte</p>
+
+                        </div>
+                    </div>
+                    <div style="clear: both;">&nbsp;</div>
+                </div>
+                <!-- end #content -->
+
+                <div style="clear: both;">&nbsp;</div>
+            </div>
+        </div>
+    </div>
+    <!-- end #page -->
+</div>
+<div id="footer">
+    <p>By Alou</p>
+</div>
+<!-- end #footer -->
+</body>
+</html>
+{% endblock %}
