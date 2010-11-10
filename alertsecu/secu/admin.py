@@ -3,9 +3,9 @@
 # maintainer: alou
 
 from django.contrib import admin
-from secu.models import Person, Region, AlertLevel, Messages
+from secu.models import Person, Area, AlertState, Level
 
 admin.site.register(Person)
-admin.site.register(Region)
-admin.site.register(AlertLevel)
-admin.site.register(Messages)
+admin.site.register(Area)
+admin.site.register(AlertState)
+admin.site.register(Level)

@@ -6,51 +6,66 @@ import datetime
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.translation import ugettext, ugettext_lazy as _
 
 
-class Person(User):
-    """person to register"""
-    phone = models.CharField(max_length=30, blank=True,
-                             verbose_name=(u"Phone"))
-    passport_number = models.CharField(max_length=30,
-                                    verbose_name=(u"Passport Number"))
-
-    def __unicode__(self):
-        return u'%(name)s' % {u'name': self.username}
-
-
-class Region(models.Model):
-    """ List of regions """
-    name = models.CharField(max_length=15, verbose_name=(u"Region"))
-    code = models.CharField(max_length=5, blank=True,
-                            verbose_name=(u"Code"))
-
-    def __unicode__(self):
-        return u"%(name)s : %(code)s" % {u'name': self.name,
-                                          u'code': self.code}
-
-
-class AlertLevel(models.Model):
-    """ Alert Level """
-    region = models.ForeignKey(Region,
-                                verbose_name=("Region"),
-                                related_name='regions')
-    level = models.CharField(max_length=15, verbose_name=("Level"))
+class Person(models.Model):
+    """ person followed by the system """
+    first_name = models.CharField(max_length=30, blank=True,
+                             verbose_name=_(u"First name"),
+                             help_text=_(u"first name of national"))
+    last_name = models.CharField(max_length=30, blank=True,
+                             verbose_name=_(u"Last name"),
+                             help_text=_(u"last name of national"))
+    phone_number = models.CharField(max_length=30, blank=True,
+                             verbose_name=_(u"Phone number"),
+                             help_text=_(u"phone number of national"))
+    passport_number = models.CharField(max_length=15,
+                            verbose_name=_(u"Passport Number"),
+                            help_text=_(u"Passport Number of national"),
+                            unique=True)
 
     def __unicode__(self):
-        return u"%(level)s : %(region)s" % {u'level': self.level,
-                                           u'region': self.region}
+        return _(u"%(first_name)s (last_name)") % \
+                                        {'last_name': self.last_name,
+                                         'first_name': self.first_name}
 
 
-class Messages(models.Model):
-    """ Message sent alert """
-    level = models.ForeignKey(AlertLevel,
-                             verbose_name=(u"Level"),
-                             related_name='levels')
-    message = models.TextField(verbose_name=(u"Message"))
-    date = models.DateField(verbose_name=(u"Date"),
-                            default=datetime.datetime.today)
+class Area(models.Model):
+    """ area affected by a warning """
+    name = models.CharField(max_length=15,
+                            verbose_name=_(u"Area"),
+                            help_text=_(u"name of area"),
+                            unique=True)
+    code = models.CharField(max_length=5,
+                            blank=True,
+                            help_text=_(u"code of area"),
+                            verbose_name=_(u"Code"))
 
     def __unicode__(self):
-        return u"%(level)s : %(date)s" % {u'level': self.level,
-                                           u'date': self.date}
+        return _(u"%(name)s") % {'name': self.name}
+
+
+class Level(models.Model):
+    """ alert level by color """
+    name = models.CharField(max_length=15,
+                            verbose_name=_(u"Level"),
+                            help_text=_(u"indicate a color \
+                                          for the alert level"))
+    code = models.CharField(max_length=10,
+                            verbose_name=_(u"Code"),
+                            help_text=_(u"code of level"))
+
+    def __unicode__(self):
+        return _(u"%(name)s") % {'name': self.name}
+
+
+class AlertState(models.Model):
+    """ Alert for an area """
+    area = models.ForeignKey(Area,
+                                verbose_name=_(u"Area"))
+    level = models.ForeignKey(Level, verbose_name=_(u'Level'))
+
+    def __unicode__(self):
+        return _(u"%(level)s for %(area)s") % {'level': self.level,
+                                           'area': self.region}
