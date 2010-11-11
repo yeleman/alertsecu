@@ -67,9 +67,10 @@ class AlertState(models.Model):
                              verbose_name=_(u"Area"),
                              help_text=_(u"chosen area"))
     level = models.ForeignKey(Level,
-                              verbose_name=_(u'Level'),
+                              verbose_name=_(u"Level"),
                               help_text=_("chosen level"))
-
+    datetime = models.DateField(verbose_name=_("Date"),
+                         default=datetime.datetime.today)
     def __unicode__(self):
         return _(u"%(level)s for %(area)s") % {'level': self.level,
                                            'area': self.area}
