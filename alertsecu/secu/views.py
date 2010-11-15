@@ -4,26 +4,18 @@
 
 from django.shortcuts import render_to_response
 
+from secu.models import Person, Area
+
 
 def home(request):
-    """display home"""
-    c = {}
+    """ display home """
+    persons = Person.objects.all()[:5]
+    areas = Area.objects.all()
+    c = {'persons': persons, 'areas': areas}
     return render_to_response('home.html', c)
 
 
-def how_it_works(request):
-    """ it explains about the tools """
+def static_page(request, template):
+    """ Displays static pages """
     c = {}
-    return render_to_response('how_it_works.html', c)
-
-
-def specifications(request):
-    """ it gives specific needs """
-    c = {}
-    return render_to_response('specifications.html', c)
-
-
-def contact(request):
-    """ it gives our contacts """
-    c = {}
-    return render_to_response('contact.html', c)
+    return render_to_response('%(temp)s.html' % {'temp': template}, c)

@@ -3,9 +3,8 @@
 # maintainer: alou
 
 from django.contrib import admin
-from secu.models import Person, Area, AlertState, Level
+from secu.models import Person, Area, AlertLevel
 
 admin.site.register(Person)
 admin.site.register(Area)
-admin.site.register(AlertState)
-admin.site.register(Level)
+admin.site.register(AlertLevel)

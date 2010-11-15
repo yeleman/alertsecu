@@ -58,22 +58,20 @@
                         <li>
                             <h2>Actuellement enregistré</h2>
                             <ul>
-                                <li><a href="#">Luc Villier (324123)</a></li>
-                                <li><a href="#">Alou dolo (32123)</a></li>
+                                {% for p in persons %}
+                                    <li><a href="#">{{p.first_name}} {{p.last_name}} ({{p.passport_number}})</a></li>
+                                {% endfor %}
                                 <p><a>Envoyez leur un message</a></p>
+
                             </ul>
                         </li>
                         <li>
                             <h2>Changez le niveau d'alerte</h2>
                             <ul>
-                                <li><a href="#">Kidal</a></li>
-                                <li><a href="#">Tombouctou</a></li>
-                                <li><a href="#">Gao</a></li>
-                                <li><a href="#">Mopti</a></li>
-                                <li><a href="#">Segou</a></li>
-                                <li><a href="#">Bamako</a></li>
-                                <li><a href="#">Sikasso</a></li>
-                                <li><a href="#">Kayes</a></li>
+
+                                {% for a in areas %}
+                                    <li><a href="#">{{a.name}}</a> {{a.alert_level}}</li>
+                                {% endfor %}
                             </ul>
                         </li>
                         <p>Ou</p>

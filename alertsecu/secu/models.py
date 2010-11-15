@@ -5,72 +5,69 @@
 import datetime
 
 from django.db import models
-from django.contrib.auth.models import User
 from django.utils.translation import ugettext, ugettext_lazy as _
 
 
 class Person(models.Model):
-    """ person followed by the system """
-    first_name = models.CharField(max_length=30, blank=True,
+    """ Person monitoring by the system """
+
+    class Meta:
+        verbose_name_plural = _(u"Persons")
+
+    first_name = models.CharField(max_length=30,
+                             blank=True,
                              verbose_name=_(u"First name"),
-                             help_text=_(u"first name of national"))
+                             help_text=_(u"First name of the person"))
     last_name = models.CharField(max_length=30, blank=True,
                              verbose_name=_(u"Last name"),
-                             help_text=_(u"last name of national"))
+                             help_text=_(u"Last name of the person"))
     phone_number = models.CharField(max_length=30, blank=True,
                              verbose_name=_(u"Phone number"),
-                             help_text=_(u"phone number of national"))
+                             help_text=_(u"Phone number of the person"))
     passport_number = models.CharField(max_length=15,
                             verbose_name=_(u"Passport Number"),
-                            help_text=_(u"Passport Number of national"),
+                            help_text=_(u"Passport Number of the person"),
                             unique=True)
 
     def __unicode__(self):
-        return _(u"%(first_name)s %(last_name)s") % \
+        return ugettext(u"%(first_name)s %(last_name)s") % \
                                         {'last_name': self.last_name,
                                          'first_name': self.first_name}
 
 
-class Area(models.Model):
-    """ area affected by a warning """
-    name = models.CharField(max_length=15,
-                            verbose_name=_(u"Area"),
-                            help_text=_(u"name of area"),
-                            unique=True)
-    code = models.CharField(max_length=5,
-                            blank=True,
-                            help_text=_(u"code of area"),
-                            verbose_name=_(u"Code"))
+class AlertLevel(models.Model):
+    """ Alert level to define """
 
-    def __unicode__(self):
-        return _(u"%(name)s") % {'name': self.name}
+    class Meta:
+        verbose_name_plural = _(u"Alerts Levels")
 
-
-class Level(models.Model):
-    """ alert level by color """
-    name = models.CharField(max_length=15,
-                            verbose_name=_(u"Level"),
-                            help_text=_(u"indicate a color \
-                                          for the alert level"))
+    name = models.CharField(max_length=50,
+                            verbose_name=_(u"Alert level"),
+                            help_text=_(u"Indicate a level"))
     code = models.CharField(max_length=10,
                             verbose_name=_(u"Code"),
                             blank=True,
-                            help_text=_(u"code of level"))
+                            help_text=_(u"Code of level"))
 
     def __unicode__(self):
-        return _(u"%(name)s") % {'name': self.name}
+        return ugettext(u"%(name)s") % {'name': self.name}
 
 
-class AlertState(models.Model):
-    """ Alert for an area """
-    area = models.ForeignKey(Area,
-                             verbose_name=_(u"Area"),
-                             help_text=_(u"chosen area"))
-    level = models.ForeignKey(Level,
-                              verbose_name=_(u"Level"),
-                              help_text=_("chosen level"))
-    datetime = models.DateField(verbose_name=_("Date"),
-                         default=datetime.datetime.today)
+class Area(models.Model):
+    """ Area affected by a warning """
+
+    class Meta:
+        verbose_name_plural = _(u"Areas")
+
+    name = models.CharField(max_length=50,
+                            verbose_name=_(u"Area"),
+                            help_text=_(u"Name of area"))
+    code = models.CharField(max_length=20,
+                            blank=True,
+                            help_text=_(u"Code of area"),
+                            verbose_name=_(u"Code"))
+    alert_level = models.ForeignKey(AlertLevel, verbose_name=_(u"Alert level"),
+                                     related_name="areas")
+
     def __unicode__(self):
-        return _(u"%(level)s for %(area)s") % {'level': self.level,
-                                           'area': self.area}
+        return ugettext(u"%(name)s") % {'name': self.name}
