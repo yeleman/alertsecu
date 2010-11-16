@@ -7,15 +7,15 @@
 <div id="wrapper">
     <div id="header">
         <div id="logo">
-            <h1><a href="#">{% trans "Systeme de communication de securite avec vos ressortissants" %} </a></h1>
+            <h1><a href="#">{% trans "Communication system with your nationals" %} </a></h1>
 
         </div>
         <div id="menu">
             <ul>
                 <li class="first current_page_item"><a href="{% url home %}">{% trans "Demonstration" %}</a></li>
-                <li ><a href="{% url how_it_works %}" title="">{% trans "Comment ca marche?" %}</a></li>
-                <li ><a href="{% url specifications %}"title="">{% trans "J'ai besoin des specifications!" %}</a></li>
-                <li ><a href="{% url contact %}" title="">{% trans "Contactez nous" %}</a></li>
+                <li ><a href="{% url how_it_works %}" title="">{% trans "How does it work?" %}</a></li>
+                <li ><a href="{% url specifications %}"title="">{% trans "I need specifications!" %}</a></li>
+                <li ><a href="{% url contact %}" title="">{% trans "Contact us" %}</a></li>
             </ul>
         </div>
     </div>
@@ -25,7 +25,7 @@
             <div id="page-bgbtm">
                 <div id="content">
                     <div class="post">
-                        <h2 class="title"><a href="#">{% trans "Essayez maintenant" %} </a></h2>
+                        <h2 class="title"><a href="#">{% trans "Try now" %} </a></h2>
                         <p>Simulez l'arrivée d'un ressortissant français</p>
                         <p>Envoyer par sms</p>
                         <div class="entry">
@@ -51,33 +51,28 @@
                     <ul>
 
                         <li>
-                            <h2>{% trans "Communiquez avec votre ressortissant" %}</h2>
+                            <h2>{% trans "Contact your national" %}</h2>
 
                         </li>
                         <p></p>
                         <li>
-                            <h2>{% trans "Actuellement enregistré" %}</h2>
+                            <h2>{% trans "Currently registered" %}</h2>
                             <ul>
                                 {% for p in persons %}
                                     <li><a href="#">{{p.first_name}} {{p.last_name}} ({{p.passport_number}})</a></li>
                                 {% endfor %}
-                                <p><a>{% trans "Envoyez leur un message" %}</a></p>
+                                <p><a>{% trans "Send them a message" %}</a></p>
 
                             </ul>
                         </li>
-                        <form method="post" action="#">{% csrf_token %}
+
                             <li>
-                                <h2>{% trans "Changez le niveau d'alerte" %}</h2>
+                                <h2>{% trans "Change the alert level" %}</h2>
                                 <ul>
 
                                     {% for a in areas %}
                                         <li>
                                             <a href="#">{{a.name}}</a>
-                                            <select name="alert">
-                                                {% for a in levels %}
-                                                    <option value="{{a.id}}">{{a.name}}</option>
-                                                {% endfor %}
-                                            </select>
                                         </li>
                                     {% endfor %}
                                 </ul>
@@ -85,16 +80,15 @@
                             <p>Ou</p>
                             <li>
                                 <div id="search" >
-
+                                    <form method="get" action="#">
                                         <div>
                                             <input type="text" name="s" id="search-text" value="Message personalisé" />
                                             <input type="submit" id="search-submit" value="Envoyer" />
                                         </div>
-
+                                    </form>
                                 </div>
                                 <div style="clear: both;">&nbsp;</div>
                             </li>
-                        </form>
                     </ul>
                 </div>
                 <!-- end #sidebar -->

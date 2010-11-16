@@ -85,7 +85,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'alertsecu.urls'
 
 TEMPLATE_DIRS = (
-    os.path.join(ROOT_DIR, "templates")
+    os.path.join(ROOT_DIR, "secu.templates")
     # Put strings here, like "/home/html/django_templates" or
     # "C:/www/django/templates".
     # Always use forward slashes, even on Windows.

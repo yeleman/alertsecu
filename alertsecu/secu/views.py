@@ -12,13 +12,9 @@ def home(request):
     """ display home """
     persons = Person.objects.all()[:5]
     areas = Area.objects.all()
-    levels = AlertLevel.objects.all()
     form = AreaForm()
-    c = {}
-    c.update(csrf(request))
-    if request.method == 'POST':
-        pass
-    c.update({'persons': persons, 'levels': levels, 'areas': areas, 'form': form})
+
+    c = {'persons': persons, 'areas': areas, 'form': form}
     return render_to_response('home.html', c)
 
 
