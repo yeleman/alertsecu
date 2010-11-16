@@ -15,7 +15,7 @@ class AreaForm(forms.ModelForm):
 
     class Meta:
         model = Area
-        exclude = []
+        exclude = ['name', 'code']
 
     def __init__(self, *args, **kwargs):
         forms.ModelForm.__init__(self, *args, **kwargs)

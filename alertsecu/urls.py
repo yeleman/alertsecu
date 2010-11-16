@@ -6,14 +6,12 @@ from django.conf.urls.defaults import *
 from django.contrib import admin
 
 from settings import MEDIA_ROOT
-
+from secu import urls
 
 admin.autodiscover()
 
 urlpatterns = patterns('',
-
-
-    (r'^', include("secu.urls")),
+    (r'^', include(urls)),
 
     (r'^admin/', include(admin.site.urls)),
 

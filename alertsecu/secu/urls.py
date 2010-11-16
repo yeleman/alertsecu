@@ -22,7 +22,4 @@ urlpatterns = patterns('',
     url(r"^contact$", views.static_page,
                       {'template': 'contact'},
                       name="contact"),
-
-
-
 )
