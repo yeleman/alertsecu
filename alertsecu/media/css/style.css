@@ -199,6 +199,8 @@ a:hover {
 
 /* Content */
 
+#form input[id="id_name"], input[id="id_code"]{display : none}
+
 #content {
     float: left;
     width: 590px;

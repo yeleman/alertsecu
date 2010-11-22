@@ -48,48 +48,54 @@
                 </div>
                 <!-- end #content -->
                 <div id="sidebar">
-                    <ul>
 
-                        <li>
-                            <h2>{% trans "Contact your national" %}</h2>
-
-                        </li>
-                        <p></p>
-                        <li>
-                            <h2>{% trans "Currently registered" %}</h2>
-                            <ul>
-                                {% for p in persons %}
-                                    <li><a href="#">{{p.first_name}} {{p.last_name}} ({{p.passport_number}})</a></li>
-                                {% endfor %}
-                                <p><a>{% trans "Send them a message" %}</a></p>
-
-                            </ul>
-                        </li>
+                        <ul>
 
                             <li>
-                                <h2>{% trans "Change the alert level" %}</h2>
-                                <ul>
+                                <h2>{% trans "Contact your national" %}</h2>
 
-                                    {% for a in areas %}
-                                        <li>
-                                            <a href="#">{{a.name}}</a>
-                                        </li>
+                            </li>
+                            <p></p>
+                            <li>
+                                <h2>{% trans "Currently registered" %}</h2>
+                                <ul>
+                                    {% for p in persons %}
+                                        <li><a href="#">{{p.first_name}} {{p.last_name}} ({{p.passport_number}})</a></li>
                                     {% endfor %}
+                                    <p><a>{% trans "Send them a message" %}</a></p>
+
                                 </ul>
                             </li>
-                            <p>Ou</p>
-                            <li>
-                                <div id="search" >
-                                    <form method="get" action="#">
-                                        <div>
-                                            <input type="text" name="s" id="search-text" value="Message personalisé" />
-                                            <input type="submit" id="search-submit" value="Envoyer" />
+
+                                <li>
+                                    <h2>{% trans "Change the alert level" %}</h2>
+                                    <ul>
+                                        <div id="form">
+
+                                            <form method="post" action="">{% csrf_token %}
+                                                <li>
+                                                    <a href="">{{area.name}}</a>{{form.name}}{{form.code}}{{form.alert_level}}
+                                                    <input type="submit" id="search-submit" name="{{area.name}}" value="OK" />
+                                                </li>
+                                            </form>
                                         </div>
-                                    </form>
-                                </div>
-                                <div style="clear: both;">&nbsp;</div>
-                            </li>
-                    </ul>
+
+                                    </ul>
+                                </li>
+                                <p>Ou</p>
+                                <li>
+                                    <div id="search" >
+
+                                            <div>
+                                                <input type="text" name="s" id="search-text" value="Message personalisé" />
+                                                <input type="submit" id="search-submit" value="Envoyer" />
+                                            </div>
+
+                                    </div>
+                                    <div style="clear: both;">&nbsp;</div>
+                                </li>
+                        </ul>
+
                 </div>
                 <!-- end #sidebar -->
                 <div style="clear: both;">&nbsp;</div>

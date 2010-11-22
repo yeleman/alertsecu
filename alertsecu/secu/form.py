@@ -10,15 +10,19 @@ from django import forms
 
 from django.utils.translation import ugettext, ugettext_lazy as _
 
+from secu.models import AlertLevel, Area
 
-class AreaForm(forms.ModelForm):
 
-    class Meta:
-        model = Area
-        exclude = ['name', 'code']
+class AreaForm(forms.Form):
+    name = forms.CharField(max_length=50)
+    code = forms.CharField(max_length=25)
+    alert_level = forms.ChoiceField(label=_("Alert level"))
+    def __init__(self, request, *args, **kwargs):
 
-    def __init__(self, *args, **kwargs):
-        forms.ModelForm.__init__(self, *args, **kwargs)
+        areas = Area.objects.all()
+        super(AreaForm, self).__init__(*args, **kwargs)
+        self.fields['alert_level'].choices = [(alert_level.id, \
+                                               alert_level.name) \
+                        for alert_level in AlertLevel.objects.all()]
 
-    def save(self, *args, **kwargs):
-        return forms.ModelForm.save(self, *args, **kwargs)
+
