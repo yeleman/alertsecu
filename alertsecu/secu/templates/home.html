@@ -71,13 +71,14 @@
                                     <h2>{% trans "Change the alert level" %}</h2>
                                     <ul>
                                         <div id="form">
-
+                                          {% for area in areas %}
                                             <form method="post" action="">{% csrf_token %}
                                                 <li>
-                                                    <a href="">{{area.name}}</a>{{form.name}}{{form.code}}{{form.alert_level}}
+                                                    {{area.name}} {{area.form.name}} {{area.form.code}} {{area.form.alert_level}}
                                                     <input type="submit" id="search-submit" name="{{area.name}}" value="OK" />
                                                 </li>
                                             </form>
+                                            {% endfor %}
                                         </div>
 
                                     </ul>
