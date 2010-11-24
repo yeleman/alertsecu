@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -6,14 +8,33 @@
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>Home</title>
+    <title>{% block title %}Pas de titre pour cette page{% endblock %}</title>
     <link href="/static/css/style.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 
 <body>
+    <div id="wrapper">
+    <div id="header">
+        <div id="logo">
+            <h1><a href="#">{% trans "Communication system with your nationals" %} </a></h1>
+
+        </div>
+        <div id="menu">
+            <ul>
+                <li class="first current_page_item"><a href="{% url home %}">{% trans "Demonstration" %}</a></li>
+                <li ><a href="{% url how_it_works %}" title="">{% trans "How does it work?" %}</a></li>
+                <li ><a href="{% url specifications %}"title="">{% trans "I need specifications!" %}</a></li>
+                <li ><a href="{% url contact %}" title="">{% trans "Contact us" %}</a></li>
+            </ul>
+        </div>
+    </div>
 
     <div id="{% block page-id %}{% endblock %}" class="container ">
         {% block content %}{% endblock %}
+    </div>
+
+    <div id="footer">
+        <p>By Alou</p>
     </div>
 
 </body>

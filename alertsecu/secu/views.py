@@ -5,44 +5,45 @@
 from django.shortcuts import render_to_response, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.core.context_processors import csrf
-from django.forms.formsets import formset_factory
 
 from secu.models import Person, Area, AlertLevel
 from secu.form import AreaForm
 
 
 def home(request):
-    """ display home, Last 5 persons registered in the system, and
-        changes the alert level for a zone
+    """
+        display dashboard with various option
+
+        - Last 5 persons registered in the system
+        - changes the alert level for a zone
     """
 
-    c = {}
-    c.update(csrf(request))
+    context = {}
+    context.update(csrf(request))
+
     # last 5 persons registered
-    persons = Person.objects.all()[:5]
-    # recovery zone
+    persons = Person.objects.all().order_by('-id')[:5]
+
     areas = Area.objects.all()
     for area in areas:
-        dict = {'name': area.name, 'code': area.code,
+        dict_ = {'name': area.name, 'code': area.code, 'id': area.id, \
                 'alert_level': area.alert_level.id}
-        area.form = AreaForm(dict)
-    if request.method == 'POST':
+        area.form = AreaForm(dict_)
 
+    if request.method == 'POST':
         form = AreaForm(request.POST)
-        #~ import ipdb; ipdb.set_trace()
         if form.is_valid():
-            # I get the zone change
-            area = Area.objects.get(name=request.POST['name'])
-            # I change the alert level for this zone
+            area = Area.objects.get(id=form.cleaned_data['id'])
             area.alert_level = AlertLevel.objects. \
-                                get(id=request.POST['alert_level'])
+                                get(id=form.cleaned_data['alert_level'])
             area.save()
             return HttpResponseRedirect(reverse('home'))
-    c.update({'persons': persons, 'areas': areas})
-    return render_to_response('home.html', c)
+
+    context.update({'persons': persons, 'areas': areas})
+    return render_to_response('home.html', context)
 
 
 def static_page(request, template):
     """ Displays static pages """
-    c = {}
-    return render_to_response('%(temp)s.html' % {'temp': template}, c)
+    context = {}
+    return render_to_response('%(temp)s.html' % {'temp': template}, context)

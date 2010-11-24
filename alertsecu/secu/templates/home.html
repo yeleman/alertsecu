@@ -3,23 +3,7 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<body>
-<div id="wrapper">
-    <div id="header">
-        <div id="logo">
-            <h1><a href="#">{% trans "Communication system with your nationals" %} </a></h1>
 
-        </div>
-        <div id="menu">
-            <ul>
-                <li class="first current_page_item"><a href="{% url home %}">{% trans "Demonstration" %}</a></li>
-                <li ><a href="{% url how_it_works %}" title="">{% trans "How does it work?" %}</a></li>
-                <li ><a href="{% url specifications %}"title="">{% trans "I need specifications!" %}</a></li>
-                <li ><a href="{% url contact %}" title="">{% trans "Contact us" %}</a></li>
-            </ul>
-        </div>
-    </div>
-    <!-- end #header -->
     <div id="page">
         <div id="page-bgtop">
             <div id="page-bgbtm">
@@ -74,8 +58,8 @@
                                           {% for area in areas %}
                                             <form method="post" action="">{% csrf_token %}
                                                 <li>
-                                                    {{area.name}} {{area.form.name}} {{area.form.code}} {{area.form.alert_level}}
-                                                    <input type="submit" id="search-submit" name="{{area.name}}" value="OK" />
+                                                    {{area.name}} {{area.form.name}} {{area.form.id}}{{area.form.code}} {{area.form.alert_level}}
+                                                    <input type="submit" id="search-submit" name="{{area.id}}" value="OK" />
                                                 </li>
                                             </form>
                                             {% endfor %}
@@ -105,9 +89,7 @@
     </div>
     <!-- end #page -->
 </div>
-<div id="footer">
-    <p>By Alou</p>
-</div>
+
 <!-- end #footer -->
 </body>
 </html>

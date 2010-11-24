@@ -199,7 +199,7 @@ a:hover {
 
 /* Content */
 
-#form input[id="id_name"], input[id="id_code"]{display : none}
+#form input[id="id_name"], input[id="id_code"], input[id='id_id']{display : none}
 
 #content {
     float: left;

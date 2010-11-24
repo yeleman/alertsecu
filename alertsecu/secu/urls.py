@@ -5,7 +5,6 @@
 from django.conf.urls.defaults import *
 from django.contrib import admin
 
-from settings import MEDIA_ROOT
 from secu import views
 
 admin.autodiscover()
