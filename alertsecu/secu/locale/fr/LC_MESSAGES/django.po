@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-16 12:50+0000\n"
+"POT-Creation-Date: 2010-11-25 09:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -103,43 +103,48 @@ msgstr "Code de la zone"
 msgid "Alert level"
 msgstr " Niveau d'alerte"
 
-#: templates/home.html:10
+#: templates/base.html:16
 msgid "Communication system with your nationals"
 msgstr "Systeme de communication de sécurite avec vos ressortissants "
 
-#: templates/home.html:15
+#: templates/base.html:21
 msgid "Demonstration"
 msgstr "Démonstration"
 
-#: templates/home.html:16
+#: templates/base.html:22 templates/how_it_works.html:8
 msgid "How does it work?"
 msgstr "Comment ca marche?"
 
-#: templates/home.html:17
+#: templates/base.html:23
 #, fuzzy
-msgid "J'ai besoin des specifications!"
+msgid "I need specifications!"
 msgstr "J'ai besoin des specifications!"
 
-#: templates/home.html:18
+#: templates/base.html:24 templates/contact.html:9
 msgid "Contact us"
 msgstr "Contactez nous"
 
-#: templates/home.html:28
+#: templates/home.html:10
 msgid "Try now"
 msgstr "Essayez maintenant"
 
-#: templates/home.html:54
+#: templates/home.html:42
 msgid "Contact your national"
 msgstr "Communiquez avec votre ressortissant"
 
-#: templates/home.html:59
+#: templates/home.html:48
 msgid "Currently registered"
 msgstr "Actuellement enregistré"
 
-#: templates/home.html:64
+#: templates/home.html:57
 msgid "Send them a message"
 msgstr "Envoyez leur un message"
 
-#: templates/home.html:70
+#: templates/home.html:64
 msgid "Change the alert level"
 msgstr "Changez le niveau d'alerte"
+
+#: templates/specifications.html:8
+#, fuzzy
+msgid "Need specifications"
+msgstr "Besoin de specifications!"

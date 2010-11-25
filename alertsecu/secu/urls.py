@@ -7,8 +7,6 @@ from django.contrib import admin
 
 from secu import views
 
-admin.autodiscover()
-
 urlpatterns = patterns('',
 
     url(r"^$", views.home, name="home"),
