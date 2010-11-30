@@ -1,7 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
 {% load i18n %}
-
+<html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <title>
@@ -9,28 +8,24 @@
         </title>
         <link href="{% url static "css/style.css" %}" rel="stylesheet" type="text/css" media="screen" />
     </head>
-
     <body>
-        <div id="title-page">
-            <h1>
-                {% trans "Communication system with your nationals" %}
-            </h1>
-        </div>
-        <div id="menu">
-            <ul>
-                <li ><a href="{% url home %}">{% trans "Demonstration" %}</a></li>
-                <li ><a href="{% url how_it_works %}" title="">{% trans "How does it work?" %}</a></li>
-                <li ><a href="{% url specifications %}"title="">{% trans "I need specifications!" %}</a></li>
-                <li ><a href="{% url contact %}" title="">{% trans "Contact us" %}</a></li>
-            </ul>
-        </div>
-        <div id="{% block page-id %}{% endblock %}" class="container ">
-            {% block content %}{% endblock %}
-        </div>
+        <div id="{% block page-id %}{% endblock %}" class="container">
+            <div id="header-page">
+                <h1 id='header'>
+                    {% trans "Communication system with your nationals" %}
+                </h1>
+            </div>
+            <div id="menu">
+                <ul>
+                    <li ><a href="{% url home %}" class="{% block page1 %}{% endblock %}">{% trans "Demonstration" %}</a></li>
+                    <li ><a href="{% url how_it_works %}" class="{% block page2 %}{% endblock %}" title="">{% trans "How does it work?" %}</a></li>
+                    <li ><a href="{% url specifications %}" class="{% block page3 %}{% endblock %}" title="">{% trans "I need specifications!" %}</a></li>
+                    <li ><a href="{% url contact %}" class="{% block page4 %}{% endblock %}" title="">{% trans "Contact us" %}</a></li>
+                </ul>
+            </div>
 
-        <div id="footer">
-            <p>By Alou</p>
-        </div>
+                {% block content %}{% endblock %}
 
+        </div>
     </body>
 </html>

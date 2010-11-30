@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-25 09:42+0000\n"
+"POT-Creation-Date: 2010-11-30 11:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -103,28 +103,28 @@ msgstr "Code de la zone"
 msgid "Alert level"
 msgstr " Niveau d'alerte"
 
-#: templates/base.html:16
+#: templates/base.html:15
 msgid "Communication system with your nationals"
 msgstr "Systeme de communication de sécurite avec vos ressortissants "
 
-#: templates/base.html:21
+#: templates/base.html:20
 msgid "Demonstration"
 msgstr "Démonstration"
 
-#: templates/base.html:22 templates/how_it_works.html:8
+#: templates/base.html:21 templates/how_it_works.html:10
 msgid "How does it work?"
 msgstr "Comment ca marche?"
 
-#: templates/base.html:23
-#, fuzzy
-msgid "I need specifications!"
-msgstr "J'ai besoin des specifications!"
+#: templates/base.html:22
 
-#: templates/base.html:24 templates/contact.html:9
+msgid "I need specifications!"
+msgstr "J'ai besoin de spécifications!"
+
+#: templates/base.html:23 templates/contact.html:11
 msgid "Contact us"
 msgstr "Contactez nous"
 
-#: templates/home.html:10
+#: templates/home.html:11
 msgid "Try now"
 msgstr "Essayez maintenant"
 
@@ -132,7 +132,7 @@ msgstr "Essayez maintenant"
 msgid "Contact your national"
 msgstr "Communiquez avec votre ressortissant"
 
-#: templates/home.html:48
+#: templates/home.html:47
 msgid "Currently registered"
 msgstr "Actuellement enregistré"
 
@@ -140,11 +140,15 @@ msgstr "Actuellement enregistré"
 msgid "Send them a message"
 msgstr "Envoyez leur un message"
 
-#: templates/home.html:64
+#: templates/home.html:63
 msgid "Change the alert level"
 msgstr "Changez le niveau d'alerte"
 
-#: templates/specifications.html:8
+#: templates/home.html:81
+msgid "Personalized message"
+msgstr "Message personalisé"
+
+#: templates/specifications.html:10
 #, fuzzy
 msgid "Need specifications"
 msgstr "Besoin de specifications!"

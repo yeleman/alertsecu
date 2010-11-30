@@ -10,7 +10,7 @@ from secu import views
 urlpatterns = patterns('',
 
     url(r"^$", views.home, name="home"),
-    url(r"^how_it_works$", views.static_page,
+    url(r"how_it_works", views.static_page,
                            {'template': 'how_it_works'},
                            name="how_it_works"),
     url(r"^specifications$", views.static_page,
