@@ -2,94 +2,65 @@
 {% load i18n %}
 {% block title %}Home{% endblock %}
 {% block page-id %}home{% endblock %}
-{% block page1 %}home{% endblock %}
+{% block page_home %}home{% endblock %}
 
 {% block content %}
-
     <div id="title">
-        <h2>
-            {% trans "Try now" %}
-        </h2>
+        <h2>{% trans "Try now" %}</h2>
     </div>
     <div id="text">
-        <p>
-            Simulez l'arrivée d'un ressortissant français
-        </p>
-        <p>
-            Envoyer par sms
-        </p>
-        <p>
-            arrive 324323
-        </p>
+        <p>Simulez l'arrivée d'un ressortissant français</p>
+        <p>Envoyer par sms</p>
+        <p>arrive 324323</p>
 
-        <p>
-            Au 70 00 00 00
-        </p>
-        <p>
-            "324323" est le numero de passport d'un ressortissant français imaginaire Michel Lemoine,
-            qui arrivait au Mali, en déclarant à travers le systeme.
-        </p>
-        <p>
-            Vous pouvez aussi env
-        </p>
-
+        <p>Au 70 00 00 00</p>
+        <p>"324323" est le numero de passport d'un ressortissant
+            français imaginaire Michel Lemoine, qui arrivait au Mali,
+             en déclarant à travers le systeme.</p>
+        <p>Vous pouvez aussi env</p>
     </div>
-
     <div id="right">
-        <h2>
-            {% trans "Contact your national" %}
-        </h2>
-
-
+        <h2>{% trans "Contact your national" %}</h2>
         <ul>
-            <p></p>
             {% if persons %}
-                <h3>
-                    {% trans "Currently registered" %}
-                </h3>
+                <h3>{% trans "Currently registered" %}</h3>
 
                 <ul>
                     {% for p in persons %}
-                        <li>
-                            {{p.first_name}} {{p.last_name}} ({{p.passport_number}})
-                        </li>
+                        <div id='alou'>
+                            <span id='first_name'>{{p.first_name}}</span>
+                            <span id='last_name'>{{p.last_name}}</span>
+                            <span id='passport_number'>({{p.passport_number}})</span>
+                        </div>
                     {% endfor %}
-                
-                    <p>
-                        {% trans "Send them a message" %}
-                    </p>
+                    <p>{% trans "Send them a message" %}</p>
                 </ul>
             {% endif %}
-
             {% if areas %}
-                <h3>
-                    {% trans "Change the alert level" %}
-                </h3>
+                <h3>{% trans "Change the alert level" %}</h3>
                 <ul>
-                    <div id="form">
-                        {% for area in areas %}
+                    {% for area in areas %}
+                        <div id = "form">
                             <form method="post" action="">{% csrf_token %}
-                                <li>
-                                    {{area.name}} {{area.form.name}} {{area.form.id}}{{area.form.code}} {{area.form.alert_level}}
-                                    <input type="submit" id="form" name="{{area.id}}" value="OK" />
-                                </li>
+                                {{area.name}}
+                                {{area.form.name}}
+                                {{area.form.id}}
+                                {{area.form.code}}
+                                <div id='float'>
+                                    {{area.form.alert_level}}
+                                    <input type="submit" id="form_submit_{{area.id}}" name="{{area.id}}" value="OK" />
+                                </div>
                             </form>
-                        {% endfor %}
-                    </div>
+                        </div>
+                    {% endfor %}
                 </ul>
-                <p>
-                    Ou
-                </p>
-                <h3>
-                    {% trans "Personalized message" %}
-                </h3>
-                <div>
+                <div id='message'>
+                    <p>Ou</p>
+                    <h3>{% trans "Personalized message" %}</h3>
                     <input type="text" name="s" id="search-text" value="Message personalisé" />
                     <input type="submit" id="search-submit" value="Envoyer" />
                 </div>
             {% endif %}
         </ul>
-
     </div>
-
 {% endblock %}
