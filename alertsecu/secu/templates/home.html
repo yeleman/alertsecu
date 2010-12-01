@@ -43,48 +43,51 @@
 
         <ul>
             <p></p>
-            <h3>
+            {% if persons %}
+                <h3>
                     {% trans "Currently registered" %}
                 </h3>
 
-            <ul>
-                {% for p in persons %}
-                    <li>
-                        {{p.first_name}} {{p.last_name}} ({{p.passport_number}})
-                    </li>
-                {% endfor %}
-                <p>
-                    {% trans "Send them a message" %}
-                </p>
-            </ul>
-
-
-            <h3>
-                {% trans "Change the alert level" %}
-            </h3>
-            <ul>
-                <div id="form">
-                    {% for area in areas %}
-                        <form method="post" action="">{% csrf_token %}
-                            <li>
-                                {{area.name}} {{area.form.name}} {{area.form.id}}{{area.form.code}} {{area.form.alert_level}}
-                                <input type="submit" id="form" name="{{area.id}}" value="OK" />
-                            </li>
-                        </form>
+                <ul>
+                    {% for p in persons %}
+                        <li>
+                            {{p.first_name}} {{p.last_name}} ({{p.passport_number}})
+                        </li>
                     {% endfor %}
-                </div>
-            </ul>
-            <p>
-                Ou
-            </p>
-            <h3>
-                {% trans "Personalized message" %}
-            </h3>
-            <div>
-                <input type="text" name="s" id="search-text" value="Message personalisé" />
-                <input type="submit" id="search-submit" value="Envoyer" />
-            </div>
+                
+                    <p>
+                        {% trans "Send them a message" %}
+                    </p>
+                </ul>
+            {% endif %}
 
+            {% if areas %}
+                <h3>
+                    {% trans "Change the alert level" %}
+                </h3>
+                <ul>
+                    <div id="form">
+                        {% for area in areas %}
+                            <form method="post" action="">{% csrf_token %}
+                                <li>
+                                    {{area.name}} {{area.form.name}} {{area.form.id}}{{area.form.code}} {{area.form.alert_level}}
+                                    <input type="submit" id="form" name="{{area.id}}" value="OK" />
+                                </li>
+                            </form>
+                        {% endfor %}
+                    </div>
+                </ul>
+                <p>
+                    Ou
+                </p>
+                <h3>
+                    {% trans "Personalized message" %}
+                </h3>
+                <div>
+                    <input type="text" name="s" id="search-text" value="Message personalisé" />
+                    <input type="submit" id="search-submit" value="Envoyer" />
+                </div>
+            {% endif %}
         </ul>
 
     </div>
