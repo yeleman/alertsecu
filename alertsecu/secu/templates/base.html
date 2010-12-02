@@ -9,19 +9,19 @@
         <link href="{% url static "css/style.css" %}" rel="stylesheet" type="text/css" media="screen" />
     </head>
     <body>
-        <div id="{% block page-id %}{% endblock %}" class="container">
-            <div id="header-page">
-                <h1 id='header'>{% trans "Communication system with your nationals" %}</h1>
+            <div id="{% block page-id %}{% endblock %}" class="container">
+                <div id="header-page">
+                    <h1 id='header'>{% trans "Communication system with your nationals" %}</h1>
+                </div>
+                <div id="menu">
+                    <ul>
+                        <li ><a href="{% url home %}" class="{% block page_home %}{% endblock %}">{% trans "Demonstration" %}</a></li>
+                        <li ><a href="{% url how_it_works %}" class="{% block page_how_it_works %}{% endblock %}" title="">{% trans "How does it work?" %}</a></li>
+                        <li ><a href="{% url specifications %}" class="{% block page_specifications %}{% endblock %}" title="">{% trans "I need specifications!" %}</a></li>
+                        <li ><a href="{% url contact %}" class="{% block page_contact %}{% endblock %}" title="">{% trans "Contact us" %}</a></li>
+                    </ul>
+                </div>
+                    {% block content %}{% endblock %}
             </div>
-            <div id="menu">
-                <ul>
-                    <li ><a href="{% url home %}" class="{% block page_home %}{% endblock %}">{% trans "Demonstration" %}</a></li>
-                    <li ><a href="{% url how_it_works %}" class="{% block page_how_it_works %}{% endblock %}" title="">{% trans "How does it work?" %}</a></li>
-                    <li ><a href="{% url specifications %}" class="{% block page_specifications %}{% endblock %}" title="">{% trans "I need specifications!" %}</a></li>
-                    <li ><a href="{% url contact %}" class="{% block page_contact %}{% endblock %}" title="">{% trans "Contact us" %}</a></li>
-                </ul>
-            </div>
-                {% block content %}{% endblock %}
-        </div>
     </body>
 </html>

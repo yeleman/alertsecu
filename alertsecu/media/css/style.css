@@ -1,79 +1,80 @@
 /* Menu */
 
-#menu { border:5px solid #BA7B29;
-        height:55px;
-        width:950px;
-        margin-left:40px;}
-#menu ul {
-    margin: 0;
-    padding: 0px 0px 0px 0px;
-    list-style: none;
-    line-height: normal;}
+#menu { border:5px solid #0153A0; height: 51px; width:769px;
+        margin-left: 320px;}
+#menu ul {margin: 0; padding: 0px 0px 0px 0px; list-style: none;
+          line-height: normal;}
 #menu li {float: left;}
-#menu a {
-    border:medium none;
-    color:#BA7B29;
-    display:block;
-    float:left;
-    font-family:'Times New Roman';
-    font-size:20px;
-    font-weight:bold;
-    height:40px;
-    margin:0 20px 0 10px;
-    padding:15px 25px 0 10px;
-    text-align:center;
-    text-decoration:none;
-}
-#home.container #menu a.home {background:#FFD7A4}
-#contact.container #menu a.contact {background:#FFD7A4}
-#how_it_works.container #menu a.how_it_works {background:#FFD7A4}
-#specifications.container #menu a.specifications {background:#FFD7A4}
+#menu a {padding-left: 10px; margin-left: 0px; padding-bottom: 0px;
+         padding-right: 10px; padding-top: 10px; margin-right: 0px;
+         border:medium none; color:#0153A0; display:block; float:left;
+         font-family:'Times New Roman'; font-size:20px;
+         font-weight:bold; height:40px; text-align:center;
+         text-decoration:none;}
+#home.container #menu a.home {background:#E5B7B4}
+#contact.container #menu a.contact {background:#E5B7B4}
+#how_it_works.container #menu a.how_it_works {background:#E5B7B4}
+#specifications.container #menu a.specifications {background:#E5B7B4}
 
 
 /* Header-page */
 
 #header-page {height:130px; padding:0 40px;}
-#header-page h1{
-    background:none repeat scroll 0 0 #BA7B29;
+#header-page h1{color:#FFFFFF;width: 777px; margin-left: 280px;
+    background-image: url("images/header.jpg");
     font-size:50px; text-align:center;font-family:Times New Roman;}
 #header {margin-top: 0px; margin-bottom: 0px;}
+#logo {width: 109px; margin-left: 40px;}
+
 
 /* Content */
 
 #title {float:left;
         width: 1200px;}
-#title h2{color:#BD7C29; font-family:'Times New Roman'; font-size:40px;
-          text-align: center}
-#text{border:5px solid #BA7B29; float:left; font-family:Times New Roman;
-      padding-left: 30px; border-left-width: 4px; margin-left: 30px;
-      width: 430px; background:#FFD7A4}
-#right {float:right; margin-right: 40px;
-        margin-bottom: 0px; margin-top: -30px;}
-#right h2{margin-top: 0px; margin-bottom: 0px;}
-#home #form form{margin-top: 30px; font-size:19px;}
+#title h2{color:#0153A0; font-family:'Times New Roman'; font-size:60px;
+          text-align: center;width: 770px; margin-left: 325px;}
+#home #text{margin-top: 80px; margin-left: 230px; width: 385px;
+            border:5px solid #0153A0; float:left; background:#E5B7B4;
+            border-left-width: 4px; font-family:Times New Roman;
+            padding-left: 30px;}
+#contact #text{width: 775px; margin-left: 315px; padding-left: 30px;
+      border:5px solid #0153A0; font-family:Times New Roman; float:left;
+      border-left-width: 4px;background:#E5B7B4}
+#specifications #text{width: 775px; margin-left: 315px;
+      border:5px solid #0153A0; float:left; padding-left: 30px;
+      font-family:Times New Roman;
+      border-left-width: 4px;background:#E5B7B4}
+#how_it_works #text{width: 775px; margin-left: 315px;
+      border:5px solid #0153A0; padding-left: 30px;
+      float:left; font-family:Times New Roman; background:#E5B7B4;
+      border-left-width: 4px;}
+#right {float:right; margin-bottom: 0px;
+        margin-top: -30px;}
+#right h2{margin-top: 0px; margin-bottom: 0px; font-size: 40px;
+          color:#0153A0;width: 500px;}
+#right h3{font-size: 30px; margin-top: 0px; color:#0153A0;
+          margin-bottom: 0px; width: 385px; height: 40px;
+          padding-left: 10px;}
+#home #form form{margin-top: 10px; font-size:20px; width: 385px;}
 #home #form input[id='form']{float: right}
 #form input[id="id_name"], input[id="id_code"],
       input[id='id_id']{display : none}
-#first_name {
-font-family:times New Roman;
-font-size:20px;
-font-weight:bold;
-}
-#last_name {
-font-family:times New Roman;
-font-size:20px;
-font-weight:normal;
-}
-#passport_number {
-font-family:times New Roman;
-color:#BD7C29;
-font-size:20px;
-font-weight:bold;
-}
-#float {
-float: right;
-}
-
-
-
-
+#first_name {font-family:times New Roman; font-size:25px;
+             font-weight:bold;}
+#last_name {font-family:times New Roman; font-size:25px;
+            font-weight:normal;}
+#passport_number {font-family:times New Roman; color:#0153A0;
+                  font-size:25px; font-weight:bold;}
+#field-persons{margin-top: 20px; border-width: 15px 5px 5px 10px ;
+               width: 426px;  margin-right: 230px; padding-left:10px;
+                margin-left: 0px;}
+#field-form{margin-top: 20px; border-width: 15px 5px 5px 10px;
+            width: 426px; margin-right: 0px; padding-left: 10px;
+            margin-left: 0px; }
+#message{margin-top: 20px; border-width: 15px 5px 5px 10px;width: 426px;
+         padding-left: 10px; margin-left: 0px; margin-right: 0px;}
+#div-message input[type='submit']{float:right}
+#div-message input[type='text']{width: 430px;}
+#ou {font-size: 30px; margin-bottom: 10px; margin-top: 26px;
+     text-align: center;}
+#float {float: right;}

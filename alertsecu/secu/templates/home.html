@@ -19,48 +19,56 @@
              en déclarant à travers le systeme.</p>
         <p>Vous pouvez aussi env</p>
     </div>
+
     <div id="right">
         <h2>{% trans "Contact your national" %}</h2>
         <ul>
             {% if persons %}
-                <h3>{% trans "Currently registered" %}</h3>
-
-                <ul>
-                    {% for p in persons %}
-                        <div id='alou'>
-                            <span id='first_name'>{{p.first_name}}</span>
-                            <span id='last_name'>{{p.last_name}}</span>
-                            <span id='passport_number'>({{p.passport_number}})</span>
-                        </div>
-                    {% endfor %}
-                    <p>{% trans "Send them a message" %}</p>
-                </ul>
+                <fieldset id='field-persons'>
+                    <h3>{% trans "Currently registered" %}</h3>
+                    <ul>
+                        {% for p in persons %}
+                            <div id='alou'>
+                                <span id='first_name'>{{p.first_name}}</span>
+                                <span id='last_name'>{{p.last_name}}</span>
+                                <span id='passport_number'>({{p.passport_number}})</span>
+                            </div>
+                        {% endfor %}
+                        <p>{% trans "Send them a message" %}</p>
+                    </ul>
+                </fieldset>
             {% endif %}
             {% if areas %}
-                <h3>{% trans "Change the alert level" %}</h3>
-                <ul>
-                    {% for area in areas %}
-                        <div id = "form">
-                            <form method="post" action="">{% csrf_token %}
-                                {{area.name}}
-                                {{area.form.name}}
-                                {{area.form.id}}
-                                {{area.form.code}}
-                                <div id='float'>
-                                    {{area.form.alert_level}}
-                                    <input type="submit" id="form_submit_{{area.id}}" name="{{area.id}}" value="OK" />
-                                </div>
-                            </form>
-                        </div>
-                    {% endfor %}
-                </ul>
-                <div id='message'>
-                    <p>Ou</p>
-                    <h3>{% trans "Personalized message" %}</h3>
-                    <input type="text" name="s" id="search-text" value="Message personalisé" />
-                    <input type="submit" id="search-submit" value="Envoyer" />
-                </div>
+                <fieldset id='field-form'>
+                    <h3>{% trans "Change the alert level" %}</h3>
+                    <ul>
+                        {% for area in areas %}
+                            <div id = "form">
+                                <form method="post" action="">{% csrf_token %}
+                                    {{area.name}}
+                                    {{area.form.name}}
+                                    {{area.form.id}}
+                                    {{area.form.code}}
+                                    <div id='float'>
+                                        {{area.form.alert_level}}
+                                        <input type="submit" id="form_submit_{{area.id}}" name="{{area.id}}" value="OK" />
+                                    </div>
+                                </form>
+                            </div>
+                        {% endfor %}
+                    </ul>
+                </fieldset>
+                <p id='ou'>Ou</p>
+                <fieldset id='message'>
+                    <div id='div-message'>
+                        <h3>{% trans "Personalized message" %}</h3>
+                        <input type="text" name="s" id="search-text" value="Message personalisé" />
+                        <input type="submit" id="search-submit" value="Envoyer" />
+                    </div>
+                </fieldset>
             {% endif %}
         </ul>
     </div>
 {% endblock %}
+
+
