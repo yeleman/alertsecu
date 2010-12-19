@@ -29,10 +29,11 @@ class Area(models.Model):
                            ('red', 'Rouge'))
 
     name = models.CharField(max_length=50)
-    alert_level = models.CharField(max_length=10)
+    alert_level = models.CharField(max_length=10, choices=ALERT_LEVEL_CHOICES,
+                                    default='green')
 
     def __unicode__(self):
-        return ugettext(u"%(name)s") % {'name': self.name}
+        return u"%(name)s" % {'name': self.name}
         
 
 class Visit(models.Model):

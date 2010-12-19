@@ -14,6 +14,11 @@ h2 {
 text-align: center;
 }
 
+h4 {
+border-bottom: 1px dotted grey;
+padding-bottom: 0.5em;
+}
+
 /** LAYOUT **/
 
 #contact-nationals {
@@ -25,4 +30,25 @@ border-left: 2px grey solid;
 
 textarea {
 height:3em;
+}
+
+dt {
+float: left;
+width:15ex;
+padding-top:5px;
+}
+
+input {
+margin-left:2ex;
+}
+
+.or {
+text-align: center;
+font-style:italic;
+}
+
+.help {
+background-color: #EEF7FF;
+padding:1em;
+font-weight:bold;
 }

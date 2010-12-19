@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% block title %}Acceuil{% endblock %}
 {% block page-id %}home{% endblock %}
-{% block page1 %}home{% endblock %}
 
 {% block content %}
 
@@ -61,31 +60,50 @@
 
         <h4>Envoyez leur un message</h4>
 
-        <p>Niveau d'alerte :</p>
+        <fieldset>
+        
+        <legend id="level_change">Niveau d'alerte</legend>
+        
+        {% for message in level_changes %}
+            <p class="help">{{ message }}</p>
+        {% endfor %}
+
        
         <dl>
-            <dt></dt>
+            {% for area_form in area_forms %}
+            <dt>{{ area_form.initial.name }}</dt>
             <dd>
-            <fom>
-            <select></select>
-            <input type="submit" value="changer" />
+            <form method="post" action="{% url change-alert-level %}" >
+                <input type="hidden" name="alert_level" value="{{ area_form.instance.alert_level }}" />
+                <input type="hidden" name="id" value="{{ area_form.instance.id }}" />
+                <input type="hidden" name="name" value="{{ area_form.instance.name }}" />
+                {{ area_form.alert_level }}
+                <input type="submit" value="Changer" />
+                {% csrf_token %}
             </form>
             </dd>
+            {% endfor %}
         </dl>
         
-        <p>
-            Ou
-        </p>
+        </fieldset>
         
-        <p>Message personalisé:</p>
-        <div>
-            <textarea></textarea>
-            <input type="submit" id="search-submit" value="Envoyer" />
-        </div>
+        <p class="or">Ou</p>
         
+        <fieldset>
         
+        <legend id="send_messages">Message personalisé</legend>
+        
+        {% for message in messages_sent %}
+            <p class="help">{{ message|safe }}</p>
+        {% endfor %}
 
-        </ul>
+        <form method="post" action="{% url send-message %}" >
+            <textarea name="message_to_send"></textarea>
+            <input type="submit" value="Envoyer" />
+            {% csrf_token %}
+        </form>
+        
+        </fieldset>
 
     </div>
 
