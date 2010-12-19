@@ -4,24 +4,18 @@
 
 from django.contrib import admin
 
-from secu.models import Person, Area, AlertLevel
+from secu.models import Person, Area
 
 
 class PersonAdmin(admin.ModelAdmin):
-    list_display = ('passport_number', 'first_name', 'last_name',
-                    'phone_number')
+    list_display = ('passport_number', 'first_name', 'last_name')
     search_fields = ['passport_number']
 
 
 class AreaAdmin(admin.ModelAdmin):
-    list_display = ('name', 'code', 'alert_level')
+    list_display = ('name', 'alert_level')
     list_filter = ['alert_level']
-
-
-class AlertLevelAdmin(admin.ModelAdmin):
-    list_display = ('name', 'code')
 
 
 admin.site.register(Person, PersonAdmin)
 admin.site.register(Area, AreaAdmin)
-admin.site.register(AlertLevel, AlertLevelAdmin)

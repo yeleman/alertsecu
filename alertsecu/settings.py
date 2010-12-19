@@ -3,7 +3,7 @@
 # maintainer: alou
 # Django settings for alertsecu project.
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 import os
@@ -16,15 +16,11 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+INSTALLED_BACKENDS = {
+}
+
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'secu.sqlite',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
-    }
 }
 
 # Local time zone for this installation. Choices can be found here:
@@ -44,11 +40,11 @@ SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
-USE_I18N = True
+USE_I18N = False
 
 # If you set this to False, Django will not format dates, numbers and
 # calendars according to the current locale
-USE_L10N = True
+USE_L10N = False
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
@@ -85,14 +81,14 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'alertsecu.urls'
 
 TEMPLATE_DIRS = (
-    os.path.join(ROOT_DIR, "secu.templates")
     # Put strings here, like "/home/html/django_templates" or
     # "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 )
 
-INSTALLED_APPS = (
+INSTALLED_APPS = [
+
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -101,11 +97,30 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'secu',
     'south',
-    # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
-)
+    
+    # the essentials.
+    #"django_nose",
+    "djtables",
+    "rapidsms",
+
+    # common dependencies (which don't clutter up the ui).
+    "rapidsms.contrib.ajax",
+    
+    # the rapidsms contrib apps.
+    "rapidsms.contrib.default",
+    "rapidsms.contrib.export",
+    "rapidsms.contrib.httptester",
+    "rapidsms.contrib.locations",
+    "rapidsms.contrib.messaging",
+    "rapidsms.contrib.scheduler",
+    "rapidsms.contrib.handlers",
+    "rapidsms.contrib.auth",
+    "direct_sms",
+    "logger_ng",
+    "django_simple_config",
+]
+
+DEFAULT_RESPONSE = "Désolé, nous ne comprenons pas votre message"
 
 try:
     import local_settings.py
