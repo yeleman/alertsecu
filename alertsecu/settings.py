@@ -34,7 +34,7 @@ TIME_ZONE = 'Africa/Bamako'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'fr-fr'
+LANGUAGE_CODE = 'fr'
 
 SITE_ID = 1
 
@@ -95,7 +95,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.admin',
-    'secu',
+    
     'south',
     
     # the essentials.
@@ -117,10 +117,31 @@ INSTALLED_APPS = [
     "rapidsms.contrib.auth",
     "direct_sms",
     "logger_ng",
+    'secu',
     "django_simple_config",
 ]
 
+RAPIDSMS_TABS = [
+    ("secu.views.home", "Retour"),
+    ("logger_ng.views.index", "Journal des messages"),
+    ("rapidsms.contrib.auth.views.registration", "Inscription des contacts"),
+    ("rapidsms.contrib.messaging.views.messaging", "Envoyer des messages"),
+    ("rapidsms.contrib.httptester.views.generate_identity", "Tester les SMS"),
+]
+
+ROOT_URLCONF = "urls"
+
+LOGIN_URL = "/login/"
+LOGIN_REDIRECT_URL = "/"
+
+LOG_LEVEL   = "DEBUG"
+LOG_FILE    = "/var/log/rapidsms/rapidsms.log"
+LOG_FORMAT  = "[%(name)s]: %(message)s"
+LOG_SIZE    = 1048576 # 1 Mb
+LOG_BACKUPS = 4 # number of logs to keep
+
 DEFAULT_RESPONSE = "Désolé, nous ne comprenons pas votre message"
+
 
 try:
     import local_settings.py

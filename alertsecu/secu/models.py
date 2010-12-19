@@ -41,10 +41,13 @@ class Visit(models.Model):
     visitor = models.ForeignKey(Visitor)
     arrival_date = models.DateField(default=datetime.date.today)
     departure_date = models.DateField(blank=True)
-    contacts = models.ManyToManyField(Contact, blank=True, null=True)
+    contacts = models.ForeignKey(Contact, blank=True, null=True)
     
     def save(self, *args, **kwargs):
         if not self.departure_date:
             self.departure_date = self.arrival_date + datetime.timedelta(15)
         models.Model.save(self, *args, **kwargs)
+        
+    def __unicode__(self):
+        return u"%s: %s - %s" % (self.visitor, self.arrival_date, self.departure_date)
         

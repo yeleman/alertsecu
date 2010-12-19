@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import datetime
+
 from django.shortcuts import render_to_response, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.shortcuts import redirect
@@ -20,7 +22,10 @@ def home(request):
     messages_sent = [m for m in messages if m.level == 10000]
     
     area_forms = [AreaForm(instance=area) for area in Area.objects.all()]
-
+    
+    visits = Visit.objects.filter(departure_date__gte=datetime.date.today())
+    visitors = [visit.visitor for visit in visits]
+    
     return render_to_response('home.html', locals(),
                               context_instance=RequestContext(request))
     

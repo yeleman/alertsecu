@@ -5,6 +5,7 @@
 from django.conf.urls.defaults import *
 from django.contrib import admin
 from django.views.generic.simple import direct_to_template
+from django.conf import settings
 
 from secu import views
 
@@ -23,5 +24,25 @@ urlpatterns = patterns('',
     url(r"^changelevel/", views.change_alert_level, 
         name="change-alert-level"),
     url(r"^sendmessage/", views.send_to_all, 
-        name="send-message")
+        name="send-message"),
+        
+    (r'^ajax/', include('rapidsms.contrib.ajax.urls')),
+    (r'^export/', include('rapidsms.contrib.export.urls')),
+    (r'^httptester/', include('rapidsms.contrib.httptester.urls')),
+    (r'^locations/', include('rapidsms.contrib.locations.urls')),
+    (r'^messagelog/', include('logger_ng.urls')),
+    (r'^messaging/', include('rapidsms.contrib.messaging.urls')),
+    (r'^registration/', include('rapidsms.contrib.auth.urls')),
+    (r'^scheduler/', include('rapidsms.contrib.scheduler.urls')),
+
+    url(r'^rapidsms-dashboard/$',
+        'rapidsms.views.dashboard',
+        name='rapidsms-dashboard'),
 )
+
+if settings.DEBUG:
+
+    urlpatterns += patterns("", 
+
+        url(r'^', include('rapidsms.urls.static_media')),
+    )

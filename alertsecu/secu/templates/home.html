@@ -54,9 +54,16 @@
         
         <h4>Actuellement enregistrés</h4>
         
+        {% if visitors %}
         <ul>
-            <li>338U78I2 (Luc Villier)</li>
+            {% for visitor in visitors %}
+            <li>{{ visitor.passport_number }} ({{ visitor.first_name }} {{ visitor.last_name }})</li>
+            {% endfor %}
         </ul>
+        {% else %}
+            <p>Aucun ressortissant actuallement ne s'est déclaré pour le moment</p>
+        {% endif %}
+        
 
         <h4>Envoyez leur un message</h4>
 
