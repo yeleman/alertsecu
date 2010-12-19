@@ -1,65 +1,28 @@
-/* Menu */
+/** HEADER **/
 
-#menu {
-        float:left;
-        height:70px;
-        margin:0 auto;
-        padding:0 30px;
-        width:1200px;
-      }
-#menu ul {
-    margin: 0;
-    padding: 0px 0px 0px 0px;
-    list-style: none;
-    line-height: normal;
+h1 {
+text-align: center;
 }
+
 #menu li {
-    float: left;
-    background: url(images/header.jpg) no-repeat right top;
-}
-#menu a {
-    border:medium none;
-    color:#FFFFFF;
-    display:block;
+    list-style-type:none;
     float:left;
-    font-family:Comic Sans MS,Helvetica,sans-serif;
-    font-size:20px;
-    font-weight:bold;
-    height:40px;
-    margin:0 20px 0 10px;
-    padding:15px 25px 0 10px;
-    text-align:center;
-    text-decoration:none;
+    padding:1em;
 }
-#home.container #menu a.home {text-decoration:blink;}
-#contact.container #menu a.contact {text-decoration:blink;}
-#how_it_works.container #menu a.how_it_works {text-decoration:blink;}
-#specifications.container #menu a.specifications {text-decoration:blink;}
 
+h2 {
+text-align: center;
+}
 
-/* Header-page */
+/** LAYOUT **/
 
-#header-page {float:left; height:130px; margin:0 auto; padding:0 30px;
-              width:1200px;}
-#header-page h1{
-    background:url("images/img01.jpg") repeat scroll 0 0 transparent;
-    font-size:50px; text-align:center;}
-#header {margin-top: 0px; margin-bottom: 0px;}
+#contact-nationals {
+padding-left:30px;
+border-left: 2px grey solid;
+}
 
+/** FORMS **/
 
-/* Content */
-
-#title {float:left;
-        width: 1200px;}
-#title h2{color:#341A1D; font-family:Comic Sans MS; font-size:40px;
-          padding-left:30px; width:1200px;}
-#text{border:5px solid #4589EA; float:left; font-family:fantasy;
-      padding-left: 30px; border-left-width: 4px; margin-left: 30px;
-      width: 430px;}
-#right {float:right; padding-top: 0px; padding-bottom: 0px;
-        margin-bottom: 0px; margin-top: -91px;}
-#right h2{padding-right: 150px;}
-#form input[id="id_name"], input[id="id_code"],
-      input[id='id_id']{display : none}
-
-
+textarea {
+height:3em;
+}

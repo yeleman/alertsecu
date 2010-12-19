@@ -1,89 +1,90 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% block title %}Home{% endblock %}
+{% block title %}Acceuil{% endblock %}
 {% block page-id %}home{% endblock %}
 {% block page1 %}home{% endblock %}
 
 {% block content %}
 
-    <div id="title">
-        <h2>
-            {% trans "Try now" %}
-        </h2>
-    </div>
-    <div id="text">
-        <p>
+    <h2>
+        Essayez maintenant
+    </h2>
+    
+    <div id="simulate-arrival" class="span-11">
+        <h3>
             Simulez l'arrivée d'un ressortissant français
-        </p>
+        </h3>
         <p>
-            Envoyer par sms
+            Envoyez par sms :
         </p>
+        
         <p>
-            arrive 324323
-        </p>
+        
+        <blockquote>
+            arrivee 34F5623G
+        </blockquote>
 
         <p>
-            Au 70 00 00 00
+            au (+223) 604 030 201 (numéro de téléphone mobile publique ordinnaire)
         </p>
+        
+        <div class="note">
         <p>
-            "324323" est le numero de passport d'un ressortissant français imaginaire Michel Lemoine,
-            qui arrivait au Mali, en déclarant à travers le systeme.
+            "34F5623G" est le numéro de passport d'un ressortissant français 
+            imaginaire, Michel Lemoine, qui arriverait au Mali, 
+            en se déclarant à travers le système.
         </p>
-        <p>
-            Vous pouvez aussi env
-        </p>
-
+        
+        <p>Vous pouvez aussi essayer :</p>
+        
+        <ul>
+            <li>4574T456 (Cécile Desmoulin)</li>
+            <li>338U78I2 (Luc Villier)</li>
+        </ul>
+ 
+        <p>Le système réagit différement aux passports qu'il ne connait pas.</p>
+        </diV>
+        
     </div>
 
-    <div id="right">
-        <h2>
-            {% trans "Contact your national" %}
-        </h2>
+    <div id="contact-nationals" class="span-11 last">
+      
+        <h3>
+            {% trans "Contact your nationals" %}
+        </h3>
 
-
+        
+        <h4>Actuellement enregistrés</h4>
+        
         <ul>
-            <p></p>
-            <h3>
-                    {% trans "Currently registered" %}
-                </h3>
+            <li>338U78I2 (Luc Villier)</li>
+        </ul>
 
-            <ul>
-                {% for p in persons %}
-                    <li>
-                        {{p.first_name}} {{p.last_name}} ({{p.passport_number}})
-                    </li>
-                {% endfor %}
-                <p>
-                    {% trans "Send them a message" %}
-                </p>
-            </ul>
+        <h4>Envoyez leur un message</h4>
 
-
-            <h3>
-                {% trans "Change the alert level" %}
-            </h3>
-            <ul>
-                <div id="form">
-                    {% for area in areas %}
-                        <form method="post" action="">{% csrf_token %}
-                            <li>
-                                {{area.name}} {{area.form.name}} {{area.form.id}}{{area.form.code}} {{area.form.alert_level}}
-                                <input type="submit" id="form" name="{{area.id}}" value="OK" />
-                            </li>
-                        </form>
-                    {% endfor %}
-                </div>
-            </ul>
-            <p>
-                Ou
-            </p>
-            <h3>
-                {% trans "Personalized message" %}
-            </h3>
-            <div>
-                <input type="text" name="s" id="search-text" value="Message personalisé" />
-                <input type="submit" id="search-submit" value="Envoyer" />
-            </div>
+        <p>Niveau d'alerte :</p>
+       
+        <dl>
+            <dt></dt>
+            <dd>
+            <fom>
+            <select></select>
+            <input type="submit" value="changer" />
+            </form>
+            </dd>
+        </dl>
+        
+        <p>
+            Ou
+        </p>
+        
+        <p>Message personalisé:</p>
+        <div>
+            <textarea></textarea>
+            <input type="submit" id="search-submit" value="Envoyer" />
+        </div>
+        
+        
 
         </ul>
 

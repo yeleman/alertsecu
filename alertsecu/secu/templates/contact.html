@@ -1,19 +1,18 @@
 {% extends "base.html" %}
-{% load i18n %}
-{% block title %}Contact{% endblock %}
+{% block title %}Contact - {% endblock %}
 {% block page-id %}contact{% endblock %}
-{% block page4 %}contact{% endblock %}
 
 {% block content %}
 
-    <div id="title">
         <h2>
-            {% trans "Contact us" %}
+            Contactez-nous
         </h2>
-    </div>
-    <div id="text">
-        <p>
-            texte
-        </p>
-    </div>
+        <dl>
+            <dt>Téléphones :</dt>
+            <dd>(+223) 76 33 30 05</dd>
+            <dd>(+223) 73 12 08 96</dd>
+            <dt>E-mail :</dt>
+            <dd>info@yeleman.com</dd>
+        </dl>
+        
 {% endblock %}

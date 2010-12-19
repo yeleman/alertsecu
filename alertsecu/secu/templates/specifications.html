@@ -1,18 +1,19 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% block title %}Specifications{% endblock %}
-{% block page-id %}specifications{% endblock %}
-{% block page3 %}specifications{% endblock %}
+{% block title %}Besoins spécifiques{% endblock %}
+{% block page-id %}specific-needs{% endblock %}
 
 {% block content %}
     <div id="title">
         <h2>
-            {% trans "Need specifications" %}
+            Vous avez des besoins specifique ?
         </h2>
     </div>
     <div id="text">
         <p>
-            texte
+            Ce site n'est qu'une démonstration, nous pouvons créer exactement
+            l'outil dont vous avez besoin, sur-mesure.
         </p>
+        <p><a href="{% url contact %}">Contactez-nous</a></p>
     </div>
 {% endblock %}

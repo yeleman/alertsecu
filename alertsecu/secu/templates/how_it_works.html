@@ -1,18 +1,15 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% block title %}How it works{% endblock %}
-{% block page-id %}how_it_works{% endblock %}
-{% block page2 %}how_it_works{% endblock %}
+{% block title %}Comment ça fonctionne ?{% endblock %}
+{% block page-id %}how-does-it-works{% endblock %}
 
 {% block content %}
-    <div id="title">
         <h2>
-            {% trans "How does it work?" %}
+            Comment ça fonctionne ?
         </h2>
-    </div>
-    <div id="text">
         <p>
-            texte
+            {% blocktrans %} 
+            Description du fonctionnement
+            {% endblocktrans %}
         </p>
-    </div>
 {% endblock %}
