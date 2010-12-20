@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <title>
-            {% block title %}{% endblock %}Communiquez avec vos ressortissants
+            {% block title %}{% endblock %}Communiquez avec vos ressortissants 
         </title>
         <link href="{% url static "css/blueprint/screen.css" %}" rel="stylesheet" type="text/css" media="screen" />
         <link href="{% url static "css/style.css" %}" rel="stylesheet" type="text/css" media="screen" />
@@ -20,10 +20,10 @@
             
             <div id="menu"  class="span-24 last" >
                 <ul>
-                    <li ><a href="{% url home %}" id="demo-link">Démonstration</a></li>
+                    <li class="first"><a href="{% url home %}" id="demo-link">Démonstration</a></li>
                     <li ><a href="{% url how_it_works %}" id="how-link" title="">Comment ça marche ?</a></li>
                     <li ><a href="{% url specifications %}" id="specific-needs-link" title="">"J'ai des besoins spécifiques !"</a></li>
-                    <li ><a href="{% url contact %}" id="contact-link" title="">Contatez-nous</a></li>
+                    <li class="last"><a href="{% url contact %}" id="contact-link" title="">Contatez-nous</a></li>
                 </ul>
             </div>
 

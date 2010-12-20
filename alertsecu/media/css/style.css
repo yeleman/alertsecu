@@ -4,13 +4,7 @@ h1 {
 text-align: center;
 }
 
-#menu li {
-    list-style-type:none;
-    float:left;
-    padding:1em;
-}
-
-h2 {
+h2, h3 {
 text-align: center;
 }
 
@@ -21,9 +15,28 @@ padding-bottom: 0.5em;
 
 /** LAYOUT **/
 
+body {
+background-color:#F9F8F4;
+}
+
+.container {
+background-color:#FFFEF9;
+padding:1em;
+border: solid 1px #C7C8CA;
+border-top: 0px;
+padding-left:2em;
+}
+
 #contact-nationals {
-padding-left:30px;
+padding-left:35px;
 border-left: 2px grey solid;
+margin-left:30px;
+}
+
+.note {
+border: 1px solid grey;
+background-color:#F5F5F5;
+padding: 1em;
 }
 
 /** FORMS **/
@@ -51,4 +64,51 @@ font-style:italic;
 background-color: #EEF7FF;
 padding:1em;
 font-weight:bold;
+}
+
+/** MENU **/
+
+#menu {
+position:relative; 
+width:960px; 
+height:45px; 
+background:url("images/menu-bg.png") 0 0 no-repeat; 
+overflow:hidden; 
+font-weight:bold;
+margin:1em 0 2em 15ex;
+}
+
+#menu ul { 
+margin:0 20px; 
+list-style:none;
+}
+
+#menu ul li { 
+float:left;
+height:45px;
+}
+
+#menu li a {
+display:block; 
+padding:14px 20px 17px 18px; 
+background:url("images/menu-separator.gif") 100% 0 no-repeat; 
+text-decoration:none;
+color:#474B4F;
+}
+
+#menu .first  {
+background:url("images/menu-separator.gif") left no-repeat; 
+}
+
+
+#menu li a:hover {
+background:url("images/menu-hover.gif");
+color:white;
+}
+
+#home #demo-link,
+#contact #contact-link,
+#how-does-it-works #how-link,
+#specific-needs #specific-needs-link {
+background:url("images/menu-active.png");
 }
