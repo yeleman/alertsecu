@@ -13,6 +13,8 @@ from django.contrib.messages.api import get_messages
 from secu.models import Visitor, Area, Visit
 from secu.forms import AreaForm
 
+from direct_sms.utils import send_msg
+
 def home(request):
 
     
@@ -41,9 +43,17 @@ def change_alert_level(request):
         form = AreaForm(request.POST, instance=area)
         if form.is_valid() and request.POST['alert_level'] != old_level:
             area = form.save()
-            messages.add_message(request, 1000, 
-                u"Le niveau d'alerte de %(city)s est passé à '%(level)s'" % {
-                'city': area.name, 'level': area.get_alert_level_display()})
+            
+            msg = u"Le niveau d'alerte de %(city)s est passé à '%(level)s'" % {
+                  'city': area.name, 'level': area.get_alert_level_display()}
+           
+            messages.add_message(request, 1000, msg)
+            
+            today = datetime.date.today()
+            for visit in Visit.objects.filter(departure_date__gte=today):
+                for con in visit.contact.connection_set.all():
+                    send_msg(text=msg, backend=con.backend, 
+                             identity=con.identity)
             
     return redirect(reverse("home") + "#level_change")
 
@@ -57,7 +67,15 @@ def send_to_all(request):
         except KeyError:
             pass
         else:
-            visitors_count = 30
+            visitors_count = 0
+            
+            today = datetime.date.today()
+            for visit in Visit.objects.filter(departure_date__gte=today):
+                for con in visit.contact.connection_set.all():
+                    visitors_count += 1
+                    send_msg(text=message, backend=con.backend, 
+                             identity=con.identity)
+            
             messages.add_message(request, 10000,
                       u"%(count)s ressortissant(s) ont reçu"\
                       u"le message: <blockquote>%(message)s</blockquote>" % {
