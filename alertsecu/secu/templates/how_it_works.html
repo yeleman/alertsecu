@@ -1,15 +1,22 @@
 {% extends "base.html" %}
-{% load i18n %}
 {% block title %}Comment ça fonctionne ? - {% endblock %}
 {% block page-id %}how-does-it-works{% endblock %}
 
 {% block content %}
         <h2>
-            Comment ça fonctionne ?
+            Comment cela fonctionne ?
         </h2>
-        <p>
-            {% blocktrans %} 
-            Description du fonctionnement
-            {% endblocktrans %}
+        <div>
+        <p>Notre installation requière :
         </p>
+        <ul>
+            <li>Un ordinateur connecté à internet.</li>
+            <li>Un modem.</li>
+            <li>Une carte SIM ordinnaire.</li>
+        </ul>
+        <p>Et c'est tout.</p>
+        <p>Pas besoin de numéro spécial, ou de matériel exotique. Et le prix
+        du SMS est celui d'un SMS ordinnaire.
+        </p>
+        </div>
 {% endblock %}

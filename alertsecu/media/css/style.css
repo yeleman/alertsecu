@@ -1,7 +1,19 @@
 /** HEADER **/
 
 h1 {
-text-align: center;
+margin-top:1em;
+background:url("images/pass_2_Phone.png") 0 0 no-repeat; 
+height:128px;
+margin-bottom:-90px;
+padding-left:90px;
+padding-top:0.5em;
+font-size:2.5em;
+margin-left:0.5em;
+}
+
+h2 {
+margin:1em;
+margin-bottom:2em;
 }
 
 h2, h3 {
@@ -39,6 +51,37 @@ background-color:#F5F5F5;
 padding: 1em;
 }
 
+blockquote.sms {
+border: 1px solid #F5E676;
+background-color:#FDF9D9;
+padding:1em;
+color:black;
+}
+
+#how-does-it-works #content div {
+background:url("images/com_plus_sim.png") 0 0 no-repeat; 
+padding-left:370px;
+margin:0 2em;
+}
+
+#specific-needs #content div {
+background:url("images/wrench.png") 30px -5px no-repeat; 
+padding-left:270px;
+margin:-2em 2em;
+padding-top:2em;
+padding-right:5em;
+height:12em;
+}
+
+#contact #content dl {
+background:url("images/speech.png")180px -5px no-repeat; 
+padding-left:370px;
+margin:-2em 2em;
+padding-top:2em;
+padding-right:5em;
+height:12em;
+}
+
 /** FORMS **/
 
 textarea {
@@ -49,6 +92,8 @@ dt {
 float: left;
 width:15ex;
 padding-top:5px;
+position:relative;
+top:-0.3em;
 }
 
 input {
@@ -61,9 +106,10 @@ font-style:italic;
 }
 
 .help {
-background-color: #EEF7FF;
+background-color: #E9FAFF;
 padding:1em;
 font-weight:bold;
+border: 1px solid #9CE8FF;
 }
 
 /** MENU **/
@@ -75,7 +121,7 @@ height:45px;
 background:url("images/menu-bg.png") 0 0 no-repeat; 
 overflow:hidden; 
 font-weight:bold;
-margin:1em 0 2em 15ex;
+margin:1em 0 2em 18ex;
 }
 
 #menu ul { 
