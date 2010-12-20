@@ -9,6 +9,7 @@ from rapidsms.models import Contact, Connection
 
 from secu.models import Visitor, Visit 
 
+
 class ArriveeHandler(KeywordHandler):
 
     keyword = "arrivee"
@@ -35,18 +36,21 @@ class ArriveeHandler(KeywordHandler):
             return self.respond(u"Nous ne connaissons pas ce numéro de passport. "\
                                   u"Assurez vous qu'il n'y a pas d'erreur dans votre SMS. "\
                                   u"Si le numéro est correct, contactez l'ambassade par téléphone.")
-                                  
-        
+                                 
         if Visit.objects.filter(visitor=visitor, 
-                       departure_date__gte=datetime.date.today()).count():
-            return self.respond(u"Vous êtes déjà enregistré. Envoyez 'départ' pour signaler votre départ.")              
+                            departure_date__gte=datetime.date.today()).count():
+            return self.respond(u"Vous êtes déjà enregistré. Envoyez 'DEPART' pour signaler votre départ.")              
         
-        visit = Visit.objects.create(visitor=visitor)
-        visit.contact = Contact.objects.create()
-        self.message.connection = visit.contact
-        visit.contact.save()
+        contact = Contact.objects.create(name=visitor.name)
+        visit = Visit.objects.create(visitor=visitor, contact=contact)
+       
+        # todo: visitor should inherit from contact ?
+        visit.contact.connection_set.add(self.msg.connection)
 
-        return self.respond(u"Bienvenu au Mali. Le jour de votre départ, envoyez 'depart' au même numero.")
+        return self.respond(u"Bienvenue au Mali, %(visitor)s. "\
+                            u"Le jour de votre départ, envoyez"\
+                            u" 'depart' au même numero." % {
+                            'visitor': visitor.name})
 
 
 

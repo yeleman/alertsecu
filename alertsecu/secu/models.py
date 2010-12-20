@@ -20,6 +20,9 @@ class Visitor(models.Model):
                 'last_name': self.last_name, 'first_name': self.first_name,
                 "passport": self.passport_number}
 
+    @property
+    def name(self):
+        return "%s %s" % (self.first_name, self.last_name)
 
 
 class Area(models.Model):
@@ -41,7 +44,7 @@ class Visit(models.Model):
     visitor = models.ForeignKey(Visitor)
     arrival_date = models.DateField(default=datetime.date.today)
     departure_date = models.DateField(blank=True)
-    contacts = models.ForeignKey(Contact, blank=True, null=True)
+    contact = models.ForeignKey(Contact, blank=True, null=True)
     
     def save(self, *args, **kwargs):
         if not self.departure_date:
