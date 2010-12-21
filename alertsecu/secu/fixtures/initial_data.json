@@ -1,0 +1,141 @@
+[
+    {
+        "pk": 1, 
+        "model": "secu.visitor", 
+        "fields": {
+            "first_name": "C\u00e9cile", 
+            "last_name": "Desmoulin", 
+            "passport_number": "4574T456"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "secu.visitor", 
+        "fields": {
+            "first_name": "Luc", 
+            "last_name": "Villier", 
+            "passport_number": "338U78I2"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "secu.visitor", 
+        "fields": {
+            "first_name": "Michel", 
+            "last_name": "Lemoine", 
+            "passport_number": "34F5623G"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "secu.area", 
+        "fields": {
+            "alert_level": "green", 
+            "name": "Kidal"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "secu.area", 
+        "fields": {
+            "alert_level": "green", 
+            "name": "Tombouctou"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "secu.area", 
+        "fields": {
+            "alert_level": "green", 
+            "name": "Gao"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "secu.area", 
+        "fields": {
+            "alert_level": "orange", 
+            "name": "Mopti"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "secu.area", 
+        "fields": {
+            "alert_level": "green", 
+            "name": "Segou"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "secu.area", 
+        "fields": {
+            "alert_level": "orange", 
+            "name": "Bamako"
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "secu.area", 
+        "fields": {
+            "alert_level": "green", 
+            "name": "Sikasso"
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "secu.area", 
+        "fields": {
+            "alert_level": "green", 
+            "name": "Kayes"
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "secu.area", 
+        "fields": {
+            "alert_level": "green", 
+            "name": "Tombouctou"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "secu.visit", 
+        "fields": {
+            "visitor": 1, 
+            "arrival_date": "2010-12-19", 
+            "contact": null, 
+            "departure_date": "2010-12-19"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "secu.visit", 
+        "fields": {
+            "visitor": 3, 
+            "arrival_date": "2010-12-20", 
+            "contact": 5, 
+            "departure_date": "2010-12-19"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "secu.visit", 
+        "fields": {
+            "visitor": 3, 
+            "arrival_date": "2010-12-20", 
+            "contact": 6, 
+            "departure_date": "2010-12-19"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "secu.visit", 
+        "fields": {
+            "visitor": 3, 
+            "arrival_date": "2010-12-20", 
+            "contact": 7, 
+            "departure_date": "2011-01-04"
+        }
+    }
+]
