@@ -14,15 +14,19 @@ margin-left:0.5em;
 h2 {
 margin:1em;
 margin-bottom:2em;
+text-align: center;
 }
 
-h2, h3 {
+h3 {
 text-align: center;
+margin-bottom:2em;
 }
 
 h4 {
 border-bottom: 1px dotted grey;
 padding-bottom: 0.5em;
+margin-bottom:2em;
+margin-top:2em;
 }
 
 /** LAYOUT **/
@@ -56,6 +60,8 @@ border: 1px solid #F5E676;
 background-color:#FDF9D9;
 padding:1em;
 color:black;
+background:url("images/phone.png") 10px 3px no-repeat; 
+padding-left:50px;
 }
 
 #how-does-it-works #content div {
@@ -74,12 +80,13 @@ height:12em;
 }
 
 #contact #content dl {
-background:url("images/speech.png")180px -5px no-repeat; 
-padding-left:370px;
+background:url("images/speech.png")160px 10px no-repeat; 
+padding-left:340px;
 margin:-2em 2em;
 padding-top:2em;
 padding-right:5em;
-height:12em;
+height:10em;
+font-size:1.5em;
 }
 
 #home #content div {
@@ -88,8 +95,27 @@ padding-left:280px;
 margin:-2em 2em;
 padding-top:2em;
 padding-right:5em;
-height:20em;
+height:13em;
 font-size:1.5em;
+}
+
+#send_messages input {
+margin-left:80%;
+}
+
+/** FOOTER **/
+
+
+#footer p {
+margin:0;
+text-align:center;
+color:grey;
+font-style:italic;
+font-size:0.8;
+}
+
+#footer {
+margin-top:2em;
 }
 
 /** FORMS **/
@@ -266,6 +292,7 @@ color:white;
 #how-does-it-works #how-link,
 #specific-needs #specific-needs-link {
 background:url("images/menu-active.png");
+color:white;
 }
 
 p.button {

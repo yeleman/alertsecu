@@ -5,15 +5,15 @@
 {% block content %}
 
     <h2>
-        Essayez en direct sur cette page
+        Testez gratuitement l'outil sur cette page de simulation
     </h2>
     
     <div id="simulate-arrival" class="span-11">
         <h3>
-            Simulez l'arrivée d'un ressortissant français
+            Prenez le rôle du ressortissant :
         </h3>
         <p>
-            Envoyez par sms :
+            Envoyez par sms au <strong>(+223) 604 030 201</strong> le texte suivant :
         </p>
         
         <p>
@@ -23,7 +23,7 @@
         </blockquote>
 
         <p>
-            au (+223) 604 030 201 (numéro de téléphone mobile publique ordinnaire)
+            (+223) 604 030 201 est un numéro de téléphone mobile publique ordinnaire. Le prix est celui d'un SMS normal sans aucune surtaxe.
         </p>
         
         <div class="note">
@@ -48,11 +48,11 @@
     <div id="contact-nationals" class="span-11 last">
       
         <h3>
-            Contactez vos ressortissants
+            Prenez le rôle de l'ambassade
         </h3>
 
         
-        <h4>Actuellement enregistrés</h4>
+        <h4>Ressortissants actuellement enregistrés</h4>
         
         {% if visitors %}
         <ul>
@@ -94,11 +94,9 @@
         
         </fieldset>
         
-        <p class="or">Ou</p>
+        <fieldset  id="send_messages">
         
-        <fieldset>
-        
-        <legend id="send_messages">Message personalisé</legend>
+        <legend>Message personalisé</legend>
         
         {% for message in messages_sent %}
             <p class="help">{{ message|safe }}</p>
