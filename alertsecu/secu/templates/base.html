@@ -12,17 +12,12 @@
     <body>
         <div id="{% block page-id %}{% endblock %}" class="container">
             
-            <div id="header-page" class="span-24 last">
-                <h1 id='header'>
-                    Système de communication avec vos ressortissants
-                </h1>
-            </div>
-            
             <div id="menu"  class="span-24 last" >
                 <ul>
-                    <li class="first"><a href="{% url home %}" id="demo-link">Démonstration</a></li>
+                    <li class="first"><a href="{% url home %}" id="home-link">Acceuil</a></li>
+                    <li ><a href="{% url simulation %}" id="demo-link">Simulation</a></li>
                     <li ><a href="{% url how_it_works %}" id="how-link" title="">Comment ça marche ?</a></li>
-                    <li ><a href="{% url specifications %}" id="specific-needs-link" title="">"J'ai des besoins spécifiques !"</a></li>
+                    <li ><a href="{% url specifications %}" id="specific-needs-link" title="">Vous avez des besoins spécifiques ?</a></li>
                     <li class="last"><a href="{% url contact %}" id="contact-link" title="">Contatez-nous</a></li>
                 </ul>
             </div>

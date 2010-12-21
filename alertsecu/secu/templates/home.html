@@ -5,113 +5,16 @@
 {% block content %}
 
     <h2>
-        Essayez en direct sur cette page
+        Outil d'information de sécurité pour vos ressortissants
     </h2>
     
-    <div id="simulate-arrival" class="span-11">
-        <h3>
-            Simulez l'arrivée d'un ressortissant français
-        </h3>
-        <p>
-            Envoyez par sms :
-        </p>
-        
-        <p>
-        
-        <blockquote class="sms">
-            arrivee 34F5623G
-        </blockquote>
-
-        <p>
-            au (+223) 604 030 201 (numéro de téléphone mobile publique ordinnaire)
-        </p>
-        
-        <div class="note">
-        <p>
-            "34F5623G" est le numéro de passport d'un ressortissant français 
-            imaginaire, Michel Lemoine, qui arriverait au Mali, 
-            en se déclarant à travers le système.
-        </p>
-        
-        <p>Vous pouvez aussi essayer :</p>
-        
+    <div>
         <ul>
-            <li>4574T456 (Cécile Desmoulin)</li>
-            <li>338U78I2 (Luc Villier)</li>
+            <li>Ayez une liste de vos ressortissants en temps réel.</li>
+            <li>Envoyez leur à tous un SMS d'alerte en un clic</li>
         </ul>
- 
-        <p>Le système réagit différement aux passports qu'il ne connait pas.</p>
-        </diV>
         
-    </div>
-
-    <div id="contact-nationals" class="span-11 last">
-      
-        <h3>
-            Contactez vos ressortissants
-        </h3>
-
-        
-        <h4>Actuellement enregistrés</h4>
-        
-        {% if visitors %}
-        <ul>
-            {% for visitor in visitors %}
-            <li>{{ visitor.passport_number }} ({{ visitor.first_name }} {{ visitor.last_name }})</li>
-            {% endfor %}
-        </ul>
-        {% else %}
-            <p>Aucun ressortissant ne s'est déclaré pour le moment</p>
-        {% endif %}
-        
-
-        <h4>Envoyez leur un message</h4>
-
-        <fieldset>
-        
-        <legend id="level_change">Niveau d'alerte</legend>
-        
-        {% for message in level_changes %}
-            <p class="help">{{ message }}</p>
-        {% endfor %}
-
-       
-        <dl>
-            {% for area_form in area_forms %}
-            <dt>{{ area_form.initial.name }}</dt>
-            <dd>
-            <form method="post" action="{% url change-alert-level %}" >
-                <input type="hidden" name="alert_level" value="{{ area_form.instance.alert_level }}" />
-                <input type="hidden" name="id" value="{{ area_form.instance.id }}" />
-                <input type="hidden" name="name" value="{{ area_form.instance.name }}" />
-                {{ area_form.alert_level }}
-                <input type="submit" value="Changer" />
-                {% csrf_token %}
-            </form>
-            </dd>
-            {% endfor %}
-        </dl>
-        
-        </fieldset>
-        
-        <p class="or">Ou</p>
-        
-        <fieldset>
-        
-        <legend id="send_messages">Message personalisé</legend>
-        
-        {% for message in messages_sent %}
-            <p class="help">{{ message|safe }}</p>
-        {% endfor %}
-
-        <form method="post" action="{% url send-message %}" >
-            <textarea name="message_to_send"></textarea>
-            <input type="submit" value="Envoyer" />
-            {% csrf_token %}
-        </form>
-        
-        </fieldset>
-
+        <p class="button"><a  class="button" href="{% url simulation %}">Faire une simulation</a></p>
     </div>
 
 {% endblock %}

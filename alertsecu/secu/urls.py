@@ -11,7 +11,9 @@ from secu import views
 
 urlpatterns = patterns('',
 
-    url(r"^$", views.home, name="home"),
+    url(r"^$", direct_to_template, {'template': 'home.html'}, 
+        name="home"),
+    url(r"^simulation/$", views.simulation, name="simulation"),
     url(r"how_it_works", direct_to_template,
                            {'template': 'how_it_works.html'},
                            name="how_it_works"),

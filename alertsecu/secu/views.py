@@ -15,7 +15,7 @@ from secu.forms import AreaForm
 
 from direct_sms.utils import send_msg
 
-def home(request):
+def simulation(request):
 
     
     messages = tuple(iter(get_messages(request)))
@@ -28,7 +28,7 @@ def home(request):
     visits = Visit.objects.filter(departure_date__gte=datetime.date.today())
     visitors = [visit.visitor for visit in visits]
     
-    return render_to_response('home.html', locals(),
+    return render_to_response('simulation.html', locals(),
                               context_instance=RequestContext(request))
     
    
