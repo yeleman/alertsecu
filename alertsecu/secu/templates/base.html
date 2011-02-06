@@ -87,7 +87,7 @@
                 
                 var refreshId = setInterval(refresh_visitors, 5000);
                 
-                $('input').hide();
+                $('#levels-form input').hide();
                 $("select").live("change keyup", function (e) {
                     $(e.target).parent('form').submit();
                 });

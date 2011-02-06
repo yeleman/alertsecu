@@ -74,7 +74,7 @@
             <dl>
                 {% for area_form in area_forms %}
                 <dt>{{ area_form.initial.name }}</dt>
-                <dd>
+                <dd id="levels-form">
                 <form method="post" action="{% url change-alert-level %}" >
                     <input type="hidden" name="alert_level" value="{{ area_form.instance.alert_level }}" />
                     <input type="hidden" name="id" value="{{ area_form.instance.id }}" />

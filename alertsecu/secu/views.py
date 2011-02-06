@@ -90,10 +90,17 @@ def send_to_all(request):
                     send_msg(text=message, backend=con.backend, 
                              identity=con.identity)
             
-            messages.add_message(request, 10000,
-                      u"%(count)s ressortissant(s) ont reçu"\
-                      u"le message: <blockquote>%(message)s</blockquote>" % {
-                       'count': visitors_count, 
-                       'message': message})
+            if visitors_count != 1:
+                messages.add_message(request, 10000,
+                          u"%(count)s ressortissants ont reçu "\
+                          u"le message: <blockquote>%(message)s</blockquote>" % {
+                           'count': visitors_count, 
+                           'message': message})
+            else:
+                messages.add_message(request, 10000,
+                          u"%(count)s ressortissant a reçu "\
+                          u"le message: <blockquote>%(message)s</blockquote>" % {
+                           'count': visitors_count, 
+                           'message': message})
                 
     return redirect(reverse("simulation") + "#send_messages")
