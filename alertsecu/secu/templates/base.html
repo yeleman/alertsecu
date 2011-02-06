@@ -8,6 +8,87 @@
         </title>
         <link href="{% url static "css/blueprint/screen.css" %}" rel="stylesheet" type="text/css" media="screen" />
         <link href="{% url static "css/style.css" %}" rel="stylesheet" type="text/css" media="screen" />
+        
+        <!-- Yeah, I know, inline JS is baaad. It's just for the demo -->
+        
+        <script src="{% url static "js/jquery-1.5.min.js" %}"></script>
+        <script>
+            $(document).ready(function() {
+
+                Array.prototype.remove = function(s) {
+                  var i = this.indexOf(s);
+                  if(i != -1) this.splice(i, 1);
+                }
+            
+
+                var refresh_visitors = function() {
+
+                    var page_visitors = []
+                    $("#visitors li").each(function() {
+                        page_visitors.push($(this).attr('id'));
+                    });
+
+                    $.post("/simulation/?randval="+ Math.random(), {},
+                        function(data) {
+                            
+                            // add new visitors to the page
+                            $.each(data, function(passport_number, visitor){
+                                if ($.inArray(passport_number, page_visitors) < 0) {
+                                    
+                                    // if the page is empty, reload
+                                    if (!page_visitors.length) {
+                                        $('body').fadeOut('slow', function() {
+                                            location.reload();
+                                        });
+                                        return false;
+                                    }
+                                    
+                                    // else add visitors to the list
+                                    $('#visitors').append('<div></div>');
+                                    $('#visitors div').hide();
+                                    $('#visitors div').append(
+                                        '<li id="' + passport_number + '">' + 
+                                        passport_number + ' ' + 
+                                        visitor['first_name'] + ' ' +
+                                        visitor['last_name'] + '</li>');
+                                    $('#visitors div').fadeIn('slow', function() {
+                                        $('#' + passport_number).unwrap();
+                                    });
+                                    page_visitors.push(passport_number);
+                                }
+                            });
+                            
+                            // remove old visitors from the page
+                            $.each(page_visitors.slice(), function(i, passport_number){
+                                if (!data[passport_number]) {
+                                    
+                                    // only one visitor, reload
+                                    if (page_visitors.length == 1) {
+                                        $('body').fadeOut('slow', function() {
+                                            location.reload();
+                                        });
+                                        return false;
+                                    }
+                                    
+                                    // else remove visitor from the list
+                                    $('#' + passport_number).fadeOut('slow', function() {
+                                        $('#' + passport_number).remove();
+                                    });
+                                    page_visitors.remove(passport_number);                                
+                                }
+                            });
+                            
+                            
+                        }, 
+                    "json");
+                    
+                }
+                
+                var refreshId = setInterval(refresh_visitors, 5000);
+                
+            });
+        </script>
+        
     </head>
     <body>
         <div id="{% block page-id %}{% endblock %}" class="container">

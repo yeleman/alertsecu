@@ -55,9 +55,9 @@
         <h4>Ressortissants actuellement enregistrés</h4>
         
         {% if visitors %}
-            <ul>
+            <ul id="visitors">
                 {% for visitor in visitors %}
-                <li>{{ visitor.passport_number }} ({{ visitor.first_name }} {{ visitor.last_name }})</li>
+                <li id="{{ visitor.passport_number }}">{{ visitor.passport_number }} ({{ visitor.first_name }} {{ visitor.last_name }})</li>
                 {% endfor %}
             </ul>
 
