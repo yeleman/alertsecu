@@ -20,6 +20,10 @@ settings.INSTALLED_BACKENDS = {
     "message_tester": {
         "ENGINE": "rapidsms.backends.bucket"
     }
+    #"gsm": {
+    #    "ENGINE": "rapidsms.backends.gsm",
+    #    "PORT": "/dev/ttyUSB1",
+    #}
 }
 
 settings.MEDIA_URL = '/static/'

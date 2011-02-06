@@ -4,16 +4,13 @@
 
 {% block content %}
 
-    <h2>
-        Testez gratuitement l'outil sur cette page de simulation
-    </h2>
     
-    <div id="simulate-arrival" class="span-11 {% if not visitors %}bordered{% endif %}">
+    <div id="simulate-arrival" class="span-11">
         <h3>
-            Prenez le rôle du ressortissant :
+            Simulez l'arrivée d'un ressortissant :
         </h3>
         <p>
-            Envoyez par sms au <strong>(+223) 604 030 201</strong> le texte suivant :
+            Envoyez par sms au <strong>(+33) 6 13 30 58 34</strong> le texte suivant :
         </p>
         
         <p>
@@ -23,12 +20,12 @@
         </blockquote>
 
         <p>
-            (+223) 604 030 201 est un numéro de téléphone mobile publique ordinnaire. Le prix est celui d'un SMS normal sans aucune surtaxe.
+            (+33) 6 13 30 58 34 est un numéro de téléphone mobile publique ordinnaire. Le prix est celui d'un SMS normal sans aucune surtaxe.
         </p>
         
         <div class="note">
         <p>
-            "34F5623G" est le numéro de passport d'un ressortissant français 
+            "34F5623G" est le numéro de passeport d'un ressortissant français 
             imaginaire, Michel Lemoine, qui arriverait au Mali, 
             en se déclarant à travers le système.
         </p>
@@ -40,12 +37,14 @@
             <li>338U78I2 (Luc Villier)</li>
         </ul>
  
-        <p>Le système réagit différement aux passports qu'il ne connait pas.</p>
+        <p>Le système réagit différement aux passeports qu'il ne connait pas.</p>
         </diV>
         
     </div>
 
     <div id="contact-nationals" class="span-11 last {% if visitors %}bordered{% endif %}">
+      
+        {% if visitors %}
       
         <h3>
             Prenez le rôle de l'ambassade
@@ -54,7 +53,7 @@
         
         <h4>Ressortissants actuellement enregistrés</h4>
         
-        {% if visitors %}
+        
             <ul id="visitors">
                 {% for visitor in visitors %}
                 <li id="{{ visitor.passport_number }}">{{ visitor.passport_number }} ({{ visitor.first_name }} {{ visitor.last_name }})</li>
@@ -92,7 +91,7 @@
             
             <fieldset  id="send_messages">
             
-            <legend>Message personalisé</legend>
+            <legend>Message personnalisé</legend>
             
             {% for message in messages_sent %}
                 <p class="help">{{ message|safe }}</p>
@@ -107,8 +106,9 @@
             </fieldset>
         
         {% else %}
-            <p class="error">Aucun ressortissant ne s'est déclaré pour le moment !</p>
-            <p>Prenez le rôle d'un ressortissant pour commencer.</p>
+        
+        <p id='invite'>Prenez votre téléphone et envoyez un SMS</p>
+        
         {% endif %}
 
     </div>

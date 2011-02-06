@@ -13,14 +13,15 @@
         
         <script src="{% url static "js/jquery-1.5.min.js" %}"></script>
         <script>
-            $(document).ready(function() {
+        $(document).ready(function() {
 
-                Array.prototype.remove = function(s) {
-                  var i = this.indexOf(s);
-                  if(i != -1) this.splice(i, 1);
-                }
+            Array.prototype.remove = function(s) {
+              var i = this.indexOf(s);
+              if(i != -1) this.splice(i, 1);
+            }
+
+            if ($('#simulation').length != 0) {  
             
-
                 var refresh_visitors = function() {
 
                     var page_visitors = []
@@ -86,7 +87,17 @@
                 
                 var refreshId = setInterval(refresh_visitors, 5000);
                 
-            });
+                $('input').hide();
+                $("select").live("change keyup", function (e) {
+                    $(e.target).parent('form').submit();
+                });
+                
+            }
+            
+            
+            
+        });
+            
         </script>
         
     </head>
@@ -96,10 +107,10 @@
             <div id="menu"  class="span-24 last" >
                 <ul>
                     <li class="first"><a href="{% url home %}" id="home-link">Acceuil</a></li>
+                    <li ><a href="{% url how_it_works %}" id="how-link">Comment ça marche ?</a></li>
                     <li ><a href="{% url simulation %}" id="demo-link">Simulation</a></li>
-                    <li ><a href="{% url how_it_works %}" id="how-link" title="">Comment ça marche ?</a></li>
-                    <li ><a href="{% url specifications %}" id="specific-needs-link" title="">Vous avez des besoins spécifiques ?</a></li>
-                    <li class="last"><a href="{% url contact %}" id="contact-link" title="">Contatez-nous</a></li>
+                    <li ><a href="{% url specifications %}" id="specific-needs-link">Vous avez des besoins différents ?</a></li>
+                    <li class="last"><a href="{% url contact %}" id="contact-link">Contatez-nous</a></li>
                 </ul>
             </div>
 

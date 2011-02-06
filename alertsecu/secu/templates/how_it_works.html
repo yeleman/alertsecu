@@ -4,19 +4,16 @@
 
 {% block content %}
         <h2>
-            Comment cela fonctionne ?
+            Comment ça marche ?
         </h2>
         <div>
-        <p>Notre installation requière :
-        </p>
-        <ul>
-            <li>Un ordinateur connecté à internet.</li>
-            <li>Un modem.</li>
-            <li>Une carte SIM ordinnaire.</li>
+        <p>Un ressortissant français arrive au Mali :</p>
+        <ol>
+            <li>Il envoit un SMS à notre système et reçoit une confirmation</li>
+            <li>Le système vous liste les ressortissants actuellement sur le territoire</li>
+            <li>Vous pouvez leur envoyer par SMS les niveaux d'alerte par région ou un message personnalisé</li>
         </ul>
-        <p>Et c'est tout.</p>
-        <p>Pas besoin de numéro spécial, ou de matériel exotique. Et le prix
-        du SMS est celui d'un SMS ordinnaire.
-        </p>
+        <p><br />Qu'est-ce que cela donne en pratique ? Testez-le vous même :</p>
+        <p class="button"><a  class="button" href="{% url simulation %}">Faire une simulation</a></p>
         </div>
 {% endblock %}

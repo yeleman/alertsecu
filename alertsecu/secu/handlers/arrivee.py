@@ -14,12 +14,12 @@ class ArriveeHandler(KeywordHandler):
 
     keyword = "arrivee"
 
-    aliases = (('fr', ("arrivee", "arrivée", "arrivé", "arrive",
-                       "arivee", "arivée", "arivé", "arive",)),)
+    aliases = (('fr', (u"arrivee", u"arrivée", u"arrivé", u"arrive",
+                       u"arivee", u"arivée", u"arivé", u"arive",)),)
 
 
     def help(self, keyword, lang_code):
-        return self.respond(u"Envoyez 'ARRIVEE' suivi de votre numero de passport")
+        return self.respond(u"Envoyez 'ARRIVEE' suivi de votre numero de passeport")
 
 
     def handle(self, text, keyword, lang_code):
@@ -27,14 +27,14 @@ class ArriveeHandler(KeywordHandler):
         passport_number = text.strip().upper()
        
         if not passport_number:
-            return self.respond(u"Vous devez fournir un numero de passport")
+            return self.respond(u"Vous devez fournir un numero de passeport")
        
         
         try:
             visitor = Visitor.objects.get(passport_number=passport_number)
         except Visitor.DoesNotExist:
-            return self.respond(u"Nous ne connaissons pas ce numéro de passport. "\
-                                  u"Assurez vous qu'il n'y a pas d'erreur dans votre SMS. "\
+            return self.respond(u"Nous ne connaissons pas ce numéro de passeport. "\
+                                  u"Assurez vous qu'il n'y ait pas d'erreur dans votre SMS. "\
                                   u"Si le numéro est correct, contactez l'ambassade par téléphone.")
                                  
         if Visit.objects.filter(visitor=visitor, 

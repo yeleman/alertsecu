@@ -14,7 +14,7 @@ class DepartHandler(KeywordHandler):
 
     keyword = "depart"
 
-    aliases = (('fr', ("départ", "depar", "dépar",)),)
+    aliases = (('fr', (u"départ", u"depar", u"dépar", u'dpart')),)
 
 
     def help(self, keyword, lang_code):
@@ -32,7 +32,7 @@ class DepartHandler(KeywordHandler):
             try:
                 visitor = Visitor.objects.get(passport_number=passport_number)
             except Visitor.DoesNotExist:
-                return self.respond(u"Nous ne connaissons pas ce numéro de passport. "\
+                return self.respond(u"Nous ne connaissons pas ce numéro de passeport. "\
                                       u"Assurez vous qu'il n'y a pas d'erreur dans votre SMS. "\
                                       u"Si le numéro est correct, contactez l'ambassade par téléphone.")
             
@@ -48,7 +48,7 @@ class DepartHandler(KeywordHandler):
             if not visits:
                 return self.respond(u"Aucune arrivée récente annoncée avec ce "\
                                     u"téléphone. Renvoyez 'DEPART' en"\
-                                    u" précisant le numéro de passport.")  
+                                    u" précisant le numéro de passeport.")  
         
         for visit in visits:
             #todo: this is not what we want in prod, just for the demo

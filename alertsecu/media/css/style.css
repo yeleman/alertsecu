@@ -20,6 +20,7 @@ text-align: center;
 h3 {
 text-align: center;
 margin-bottom:2em;
+margin-top:1em;
 }
 
 h4 {
@@ -45,6 +46,18 @@ padding-left:2em;
 
 #contact-nationals {
 padding-left:35px;
+font-size:1.3em;
+}
+
+#simulation #content {
+margin-top:2em;
+}
+
+#simulate-arrival,
+#how-does-it-works p,
+#how-does-it-works ol li,
+#specific-needs p {
+font-size:1.2em;
 }
 
 
@@ -53,10 +66,14 @@ border-left: 2px grey solid;
 margin-left:30px;
 }
 
-#simulate-arrival.bordered {
-border-right: 2px grey solid;
-padding-right:30px;
+#invite {
+padding-top:2em;
+font-size:2.5em;
+color:grey;
+padding-bottom:150px;
+background: url("images/arrow.png") bottom center no-repeat;
 }
+
 
 .note {
 border: 1px solid grey;
@@ -305,5 +322,11 @@ color:white;
 }
 
 p.button {
-margin:2em 15ex;
+margin:0 90px;
+font-size:1.5em;
+}
+
+#how-does-it-works p.button {
+font-size:2.0em;
+margin:0 -70px;
 }

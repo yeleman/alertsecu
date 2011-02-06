@@ -115,14 +115,14 @@ INSTALLED_APPS = [
     "rapidsms.contrib.handlers",
     "rapidsms.contrib.auth",
     "direct_sms",
-    "logger_ng",
+   # "logger_ng",
     'secu',
     "django_simple_config",
 ]
 
 RAPIDSMS_TABS = [
     ("secu.views.simulation", "Retour"),
-    ("logger_ng.views.index", "Journal des messages"),
+   # ("logger_ng.views.index", "Journal des messages"),
     ("rapidsms.contrib.auth.views.registration", "Inscription des contacts"),
     ("rapidsms.contrib.messaging.views.messaging", "Envoyer des messages"),
     ("rapidsms.contrib.httptester.views.generate_identity", "Tester les SMS"),
