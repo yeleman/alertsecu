@@ -8,7 +8,7 @@
         Testez gratuitement l'outil sur cette page de simulation
     </h2>
     
-    <div id="simulate-arrival" class="span-11">
+    <div id="simulate-arrival" class="span-11 {% if not visitors %}bordered{% endif %}">
         <h3>
             Prenez le rôle du ressortissant :
         </h3>
@@ -45,7 +45,7 @@
         
     </div>
 
-    <div id="contact-nationals" class="span-11 last">
+    <div id="contact-nationals" class="span-11 last {% if visitors %}bordered{% endif %}">
       
         <h3>
             Prenez le rôle de l'ambassade
@@ -55,60 +55,61 @@
         <h4>Ressortissants actuellement enregistrés</h4>
         
         {% if visitors %}
-        <ul>
-            {% for visitor in visitors %}
-            <li>{{ visitor.passport_number }} ({{ visitor.first_name }} {{ visitor.last_name }})</li>
+            <ul>
+                {% for visitor in visitors %}
+                <li>{{ visitor.passport_number }} ({{ visitor.first_name }} {{ visitor.last_name }})</li>
+                {% endfor %}
+            </ul>
+
+            <h4>Envoyez leur un message</h4>
+
+            <fieldset>
+            
+            <legend id="level_change">Niveau d'alerte</legend>
+            
+            {% for message in level_changes %}
+                <p class="help">{{ message }}</p>
             {% endfor %}
-        </ul>
-        {% else %}
-            <p>Aucun ressortissant ne s'est déclaré pour le moment</p>
-        {% endif %}
-        
 
-        <h4>Envoyez leur un message</h4>
+           
+            <dl>
+                {% for area_form in area_forms %}
+                <dt>{{ area_form.initial.name }}</dt>
+                <dd>
+                <form method="post" action="{% url change-alert-level %}" >
+                    <input type="hidden" name="alert_level" value="{{ area_form.instance.alert_level }}" />
+                    <input type="hidden" name="id" value="{{ area_form.instance.id }}" />
+                    <input type="hidden" name="name" value="{{ area_form.instance.name }}" />
+                    {{ area_form.alert_level }}
+                    <input type="submit" value="Changer" />
+                    {% csrf_token %}
+                </form>
+                </dd>
+                {% endfor %}
+            </dl>
+            
+            </fieldset>
+            
+            <fieldset  id="send_messages">
+            
+            <legend>Message personalisé</legend>
+            
+            {% for message in messages_sent %}
+                <p class="help">{{ message|safe }}</p>
+            {% endfor %}
 
-        <fieldset>
-        
-        <legend id="level_change">Niveau d'alerte</legend>
-        
-        {% for message in level_changes %}
-            <p class="help">{{ message }}</p>
-        {% endfor %}
-
-       
-        <dl>
-            {% for area_form in area_forms %}
-            <dt>{{ area_form.initial.name }}</dt>
-            <dd>
-            <form method="post" action="{% url change-alert-level %}" >
-                <input type="hidden" name="alert_level" value="{{ area_form.instance.alert_level }}" />
-                <input type="hidden" name="id" value="{{ area_form.instance.id }}" />
-                <input type="hidden" name="name" value="{{ area_form.instance.name }}" />
-                {{ area_form.alert_level }}
-                <input type="submit" value="Changer" />
+            <form method="post" action="{% url send-message %}" >
+                <textarea name="message_to_send"></textarea>
+                <input type="submit" value="Envoyer" />
                 {% csrf_token %}
             </form>
-            </dd>
-            {% endfor %}
-        </dl>
+            
+            </fieldset>
         
-        </fieldset>
-        
-        <fieldset  id="send_messages">
-        
-        <legend>Message personalisé</legend>
-        
-        {% for message in messages_sent %}
-            <p class="help">{{ message|safe }}</p>
-        {% endfor %}
-
-        <form method="post" action="{% url send-message %}" >
-            <textarea name="message_to_send"></textarea>
-            <input type="submit" value="Envoyer" />
-            {% csrf_token %}
-        </form>
-        
-        </fieldset>
+        {% else %}
+            <p class="error">Aucun ressortissant ne s'est déclaré pour le moment !</p>
+            <p>Prenez le rôle d'un ressortissant pour commencer.</p>
+        {% endif %}
 
     </div>
 

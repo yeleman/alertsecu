@@ -55,7 +55,7 @@ def change_alert_level(request):
                     send_msg(text=msg, backend=con.backend, 
                              identity=con.identity)
             
-    return redirect(reverse("home") + "#level_change")
+    return redirect(reverse("simulation") + "#level_change")
 
 
 def send_to_all(request):
@@ -82,4 +82,4 @@ def send_to_all(request):
                        'count': visitors_count, 
                        'message': message})
                 
-    return redirect(reverse("home") + "#send_messages")
+    return redirect(reverse("simulation") + "#send_messages")

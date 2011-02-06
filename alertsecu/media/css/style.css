@@ -45,8 +45,17 @@ padding-left:2em;
 
 #contact-nationals {
 padding-left:35px;
+}
+
+
+#contact-nationals.bordered {
 border-left: 2px grey solid;
 margin-left:30px;
+}
+
+#simulate-arrival.bordered {
+border-right: 2px grey solid;
+padding-right:30px;
 }
 
 .note {

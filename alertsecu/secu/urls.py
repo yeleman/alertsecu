@@ -7,6 +7,9 @@ from django.contrib import admin
 from django.views.generic.simple import direct_to_template
 from django.conf import settings
 
+from django.contrib.auth.views import login , logout_then_login
+
+
 from secu import views
 
 urlpatterns = patterns('',
@@ -41,6 +44,15 @@ urlpatterns = patterns('',
         'rapidsms.views.dashboard',
         name='rapidsms-dashboard'),
 )
+
+urlpatterns += patterns("",
+    
+    url(r'^login/$', login, name='rapidsms-login', 
+        kwargs={"template_name" : 'login.html'}),
+    url(r'^logout/$', logout_then_login, name='rapidsms-logout'),
+    
+)
+
 
 if settings.DEBUG:
 

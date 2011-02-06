@@ -96,11 +96,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.admin',
     
-    'south',
-    
     # the essentials.
     #"django_nose",
     "djtables",
+    "djappsettings",
     "rapidsms",
 
     # common dependencies (which don't clutter up the ui).
@@ -122,7 +121,7 @@ INSTALLED_APPS = [
 ]
 
 RAPIDSMS_TABS = [
-    ("secu.views.home", "Retour"),
+    ("secu.views.simulation", "Retour"),
     ("logger_ng.views.index", "Journal des messages"),
     ("rapidsms.contrib.auth.views.registration", "Inscription des contacts"),
     ("rapidsms.contrib.messaging.views.messaging", "Envoyer des messages"),
