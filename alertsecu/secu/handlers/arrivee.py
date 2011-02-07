@@ -33,13 +33,13 @@ class ArriveeHandler(KeywordHandler):
         try:
             visitor = Visitor.objects.get(passport_number=passport_number)
         except Visitor.DoesNotExist:
-            return self.respond(u"Nous ne connaissons pas ce numéro de passeport. "\
+            return self.respond(u"Nous ne connaissons pas ce numero de passeport. "\
                                   u"Assurez vous qu'il n'y ait pas d'erreur dans votre SMS. "\
-                                  u"Si le numéro est correct, contactez l'ambassade par téléphone.")
+                                  u"Si le numero est correct, contactez le consulat par telephone.")
                                  
         if Visit.objects.filter(visitor=visitor, 
                             departure_date__gte=datetime.date.today()).count():
-            return self.respond(u"Vous êtes déjà enregistré. Envoyez 'DEPART' pour signaler votre départ.")              
+            return self.respond(u"Vous etes deja enregistre. Envoyez 'DEPART' pour signaler votre depart.")              
         
         contact = Contact.objects.create(name=visitor.name)
         visit = Visit.objects.create(visitor=visitor, contact=contact)
@@ -48,8 +48,8 @@ class ArriveeHandler(KeywordHandler):
         visit.contact.connection_set.add(self.msg.connection)
 
         return self.respond(u"Bienvenue au Mali, %(visitor)s. "\
-                            u"Le jour de votre départ, envoyez"\
-                            u" 'depart' au même numero." % {
+                            u"Le jour de votre depart, envoyez"\
+                            u" 'depart' au meme numero." % {
                             'visitor': visitor.name})
 
 

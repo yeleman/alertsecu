@@ -58,7 +58,7 @@ def change_alert_level(request):
         if form.is_valid() and request.POST['alert_level'] != old_level:
             area = form.save()
             
-            msg = u"Le niveau d'alerte de %(city)s est passé à '%(level)s'" % {
+            msg = u"Le niveau d'alerte de %(city)s est passe a '%(level)s'" % {
                   'city': area.name, 'level': area.get_alert_level_display()}
            
             messages.add_message(request, 1000, msg)

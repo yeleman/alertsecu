@@ -32,31 +32,31 @@ class DepartHandler(KeywordHandler):
             try:
                 visitor = Visitor.objects.get(passport_number=passport_number)
             except Visitor.DoesNotExist:
-                return self.respond(u"Nous ne connaissons pas ce numéro de passeport. "\
+                return self.respond(u"Nous ne connaissons pas ce numero de passeport. "\
                                       u"Assurez vous qu'il n'y a pas d'erreur dans votre SMS. "\
-                                      u"Si le numéro est correct, contactez l'ambassade par téléphone.")
+                                      u"Si le numero est correct, contactez le consulat par telephone.")
             
             visits = list(Visit.objects.filter(visitor=visitor, 
                                                departure_date__gte=today))              
             if not visits:
-                return self.respond(u"Vous n'êtes pas enregistré. Envoyez 'ARRIVEE' pour signaler votre arrivée.")              
+                return self.respond(u"Vous n'etes pas enregistre. Envoyez 'ARRIVEE' pour signaler votre arrivee.")              
         
         else:
             c = self.msg.connection
             visits = list(c.contact.visit_set.filter(departure_date__gte=today))
                                            
             if not visits:
-                return self.respond(u"Aucune arrivée récente annoncée avec ce "\
-                                    u"téléphone. Renvoyez 'DEPART' en"\
-                                    u" précisant le numéro de passeport.")  
+                return self.respond(u"Aucune arrivee recente annoncee avec ce "\
+                                    u"telephone. Renvoyez 'DEPART' en"\
+                                    u" precisant le numero de passeport.")  
         
         for visit in visits:
             #todo: this is not what we want in prod, just for the demo
             visit.departure_date = today - datetime.timedelta(1)
             visit.save()
             
-        return self.respond(u"Merci de votre visite et à bientôt. Vous "\
-                            u"ne recevrez plus d'alertes à partir de demain.")
+        return self.respond(u"Merci de votre visite et a bientot. Vous "\
+                            u"ne recevrez plus d'alertes a partir de demain.")
 
 
 
